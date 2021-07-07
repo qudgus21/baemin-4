@@ -17,8 +17,6 @@ const handlePhoneInputChange = (e) => {
             e.target.value += '-'
         }
     }
-    //backspace
-
 
     if (value.match(/^\d{3}-\d{3,4}-\d{4}$/)) {
         $pCheck.classList.add('complete')
@@ -101,7 +99,7 @@ const handleCertificationFocusOut = (e) => {
 
 const handleNextClick = (e) => {
     if (e.target.classList.contains('complete')) {
-        console.log('다음페이지로 이동')
+        window.location.href = '/signup/register';
     }
 }
 
@@ -131,3 +129,4 @@ const init = () => {
 }
 
 init();
+
