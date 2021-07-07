@@ -7,11 +7,11 @@ let signup = {
     }
   },
 
-  userInfo: (req, res) => {
+  register: (req, res) => {
     try {
-      res.render("userInfo");
+      res.render("register");
     } catch (error) {
-      res.render("userInfo");
+      res.render("register");
     }
   },
 };
