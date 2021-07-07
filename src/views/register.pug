@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(cahrset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", type="text/css" href="/css/reset.css")
+    link(rel="stylesheet", type="text/css" href="/css/layout.css")
+    link(rel="stylesheet", type="text/css" href="/css/register.css")
+    title study pug
+  body 
+    div.layout.u_container
+        header
+            img(src='../static/images/arrow.png')
+            h3 회원가입
+            button 완료
+        section.input_wrapper.email_wrapper
+            label(for="email") 이메일
+            form
+                input(type="text", name="email", placeholder="이메일을 입력해주세요")
+                div
+                    button x    
+                    span.none v
+                button 중복확인        
+        div.info.none
+            section.input_wrapper
+                label(for="nickname") 닉네임
+                form
+                    input(type="text", name="nickname", placeholder="닉네임을 입력해주세요")
+                    div
+                        span v
+            section.input_wrapper
+                label(for="password") 비밀번호
+                form
+                    input(type="text", name="password", placeholder="비밀번호를 입력해주세요")
+                    div
+                        span v
+                div.none     
+            section.input_wrapper
+                label(for="birth") 생년월일
+                form
+                    input(type="text", name="birth", maxlength='10', placeholder="예) 2000.01.01")
+                    div.none
+                        span v
+                div.none     
+    script(src="/js/register.js")
+
