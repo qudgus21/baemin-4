@@ -1,5 +1,4 @@
 let express = require("express");
-let bodyParser = require("body-parser");
 let cors = require("cors");
 let cookieParser = require("cookie-parser");
 
@@ -10,12 +9,13 @@ app.set("view engine", "pug");
 
 app.use("/js", express.static("js"));
 app.use("/static", express.static("static"));
+app.use("/images", express.static("static/images"));
 app.use("/css", express.static("css"));
 
 app.use(cookieParser());
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use("/", require("./routes/main"));
 app.use("/login", require("./routes/login"));
@@ -24,4 +24,3 @@ app.use("/signup", require("./routes/signup"));
 app.listen(serverPort, (req, res) => {
   console.log(`Sever is running on port ${serverPort}!`);
 });
-
