@@ -3,9 +3,9 @@
 let login = {
   page: (req, res) => {
     try {
-      res.render("test2", { message: "test~" });
+      res.render("login", { message: "test~" });
     } catch (error) {
-      res.render("test2", { message: "error~" });
+      res.render("login", { message: "error~" });
     }
   },
 };

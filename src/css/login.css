@@ -1,0 +1,87 @@
+.login-page {
+}
+
+.login-form-wrapper form {
+  display: grid;
+  row-gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.login-form-wrapper input {
+  height: 40px;
+  border-bottom: 1px solid var(--color-lightGray1);
+  font-size: 1.2em;
+}
+
+.login-form-wrapper input::placeholder {
+  color: var(--color-lightGray0);
+}
+
+.login-form-wrapper input[type="submit"] {
+  height: 50px;
+  font-size: 1.3em;
+  font-weight: 600;
+  color: var(--color-white0);
+  background-color: var(--color-baemin0);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.find-button-wrapper {
+  display: grid;
+  grid-template-columns: auto 1px auto;
+  align-items: center;
+  column-gap: 10px;
+  justify-content: center;
+  margin-bottom: 150px;
+}
+
+.find-button-wrapper button {
+  font-size: 1.2em;
+  height: 40px;
+  background-color: var(--color-white0);
+}
+
+.find-button-wrapper .gap {
+  height: 10px;
+  background-color: var(--color-lightGray0);
+}
+
+.socail-login-wrapper {
+  display: grid;
+  row-gap: 10px;
+}
+
+.socail-login-wrapper button {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: center;
+  align-items: center;
+  column-gap: 8px;
+  width: 100%;
+  height: 30px;
+  font-size: 1em;
+  color: var(--color-darkGray0);
+  border: 1px solid var(--color-darkGray1);
+  border-radius: 5px;
+}
+
+#facebook img {
+  width: 7px;
+}
+
+#naver img,
+#apple img {
+  width: 10px;
+}
+
+.socail-login-wrapper p {
+  margin-top: 10px;
+  text-align: center;
+  color: var(--color-darkGray1);
+}
+
+.socail-login-wrapper a {
+  color: var(--color-blue0);
+}
