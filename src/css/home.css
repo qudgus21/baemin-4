@@ -6,26 +6,26 @@ div.home * {
   background-color: var(--color-white0);
 }
 
-header {
+.home header {
   display: grid;
   justify-content: center;
   align-items: center;
 }
 
-header h1 {
+.home header h1 {
   text-align: center;
 }
 
-header div.banner {
+.home header div.banner {
   height: fit-content;
 }
 
-header img {
+.home header img {
   width: 100%;
   height: 100%;
 }
 
-.login {
+.home .login {
   display: grid;
   align-items: center;
   grid-template-columns: 80px 1fr 30px;
