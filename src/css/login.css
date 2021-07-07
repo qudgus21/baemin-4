@@ -82,3 +82,7 @@
   text-align: center;
   color: var(--color-darkGray1);
 }
+
+.socail-login-wrapper a {
+  color: var(--color-blue0);
+}
