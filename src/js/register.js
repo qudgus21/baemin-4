@@ -1,12 +1,12 @@
 const handleEmailChange = (e) => {
-    const $eCancle = e.target.nextSibling.childNodes[0]
-    const $eBtn = e.target.parentNode.lastChild
+    const $emailCancleBtn = e.target.nextSibling.childNodes[0]
+    const $emailBtn = e.target.parentNode.lastChild
     if (e.target.value.length) {
-        $eCancle.classList.remove('none')
-        $eBtn.classList.add('focus')
+        $emailCancleBtn.classList.remove('none')
+        $emailBtn.classList.add('focus')
     } else {
-        $eCancle.classList.add('none')
-        $eBtn.classList.remove('focus')
+        $emailCancleBtn.classList.add('none')
+        $emailBtn.classList.remove('focus')
     }
 
 }
@@ -21,26 +21,26 @@ const handleFocusOut = (e) => {
 
 const handleEmailBtnClick = (e) => {
     e.preventDefault()
-    const $eCancle = e.target.previousSibling.childNodes[0]
-    const $eCheck = e.target.previousSibling.childNodes[1]
-    const $eInput = e.target.parentNode.firstChild
-    const $info = document.querySelector('.info')
-    if ($eInput.value) {
-        $eCancle.classList.add('none')
-        $eCheck.classList.add('complete')
-        $eCheck.classList.remove('none')
-        $info.classList.remove('none')
-        $eInput.disabled = true;
+    const $emailCancleBtn = e.target.previousSibling.childNodes[0]
+    const $emailCheck = e.target.previousSibling.childNodes[1]
+    const $emailInput = e.target.parentNode.firstChild
+    const $userInfoWrapper = document.querySelector('.info')
+    if ($emailInput.value) {
+        $emailCancleBtn.classList.add('none')
+        $emailCheck.classList.add('complete')
+        $emailCheck.classList.remove('none')
+        $userInfoWrapper.classList.remove('none')
+        $emailInput.disabled = true;
     }
     completeCheck()
 }
 
 const handleNicknameChange = (e) => {
-    const $nCheck = e.target.nextSibling.childNodes[0]
+    const $nameCheck = e.target.nextSibling.childNodes[0]
     if (e.target.value) {
-        $nCheck.classList.add('complete')
+        $nameCheck.classList.add('complete')
     } else {
-        $nCheck.classList.remove('complete')
+        $nameCheck.classList.remove('complete')
     }
     completeCheck()
 }
@@ -103,13 +103,13 @@ const checkCombination = (pwd) => {
 
 const pwdValidation = (pwd) => {
     let ret;
-    const comb = checkCombination(pwd)
-    const same = checkSame(pwd)
-    const seq = checkConsecutive(pwd)
+    const isCombinated = checkCombination(pwd)
+    const isSame = checkSame(pwd)
+    const isSeq = checkConsecutive(pwd)
 
-    if (pwd.length < 10 || !comb) {
+    if (pwd.length < 10 || !isCombinated) {
         ret = '10자 이상 영어, 대문자, 소문자, 숫자, 특수문자 중 2종류를 조합해야 합니다.'
-    } else if (same || seq) {
+    } else if (isSame || isSeq) {
         ret = '같은 숫자 혹은 연속된 숫자를 3개이상 입력할 수 없습니다.'
     }
     return ret;
@@ -117,27 +117,27 @@ const pwdValidation = (pwd) => {
 
 
 const handlePwdChange = (e) => {
-    const $pAlert = e.target.parentNode.nextSibling
-    const $pCheck = e.target.nextSibling.childNodes[0]
+    const $pwdAlertMsg = e.target.parentNode.nextSibling
+    const $pwdCheck = e.target.nextSibling.childNodes[0]
     const $form = e.target.parentNode
 
     let result = pwdValidation(e.target.value)
     if (result) {
-        $pAlert.innerHTML = result
-        $pAlert.classList.add('alert')
-        $pAlert.classList.remove('none')
-        $pCheck.classList.remove('complete')
+        $pwdAlertMsg.innerHTML = result
+        $pwdAlertMsg.classList.add('alert')
+        $pwdAlertMsg.classList.remove('none')
+        $pwdCheck.classList.remove('complete')
         $form.classList.add('b_red')
     } else {
-        $pAlert.classList.add('none')
-        $pAlert.classList.remove('alert')
-        $pCheck.classList.add('complete')
+        $pwdAlertMsg.classList.add('none')
+        $pwdAlertMsg.classList.remove('alert')
+        $pwdCheck.classList.add('complete')
         $form.classList.remove('b_red')
     }
 
     if (!e.target.value) {
-        $pAlert.classList.add('none')
-        $pAlert.classList.remove('alert')
+        $pwdAlertMsg.classList.add('none')
+        $pwdAlertMsg.classList.remove('alert')
         $form.classList.remove('b_red')
     }
     completeCheck()
@@ -155,8 +155,8 @@ const birthValidation = (birth) => {
 
 
 const handleBirthChange = (e) => {
-    const $bAlert = e.target.parentNode.nextSibling
-    const $bCheck = e.target.nextSibling.childNodes[0]
+    const $birthAlertMsg = e.target.parentNode.nextSibling
+    const $birthCheck = e.target.nextSibling.childNodes[0]
     const $form = e.target.parentNode
     let value = e.target.value
 
@@ -172,20 +172,20 @@ const handleBirthChange = (e) => {
     let result = birthValidation(value)
 
     if (result) {
-        $bAlert.classList.add('none')
-        $bAlert.classList.remove('alert')
-        $bCheck.classList.add('complete')
+        $birthAlertMsg.classList.add('none')
+        $birthAlertMsg.classList.remove('alert')
+        $birthCheck.classList.add('complete')
         $form.classList.remove('b_red')
     } else {
-        $bAlert.innerHTML = '올바른 생년월일을 입력해야 합니다.'
-        $bAlert.classList.add('alert')
-        $bAlert.classList.remove('none')
-        $bCheck.classList.remove('complete')
+        $birthAlertMsg.innerHTML = '올바른 생년월일을 입력해야 합니다.'
+        $birthAlertMsg.classList.add('alert')
+        $birthAlertMsg.classList.remove('none')
+        $birthCheck.classList.remove('complete')
         $form.classList.add('b_red')
     }
     if (!e.target.value) {
-        $bAlert.classList.add('none')
-        $bAlert.classList.remove('alert')
+        $birthAlertMsg.classList.add('none')
+        $birthAlertMsg.classList.remove('alert')
         $form.classList.remove('b_red')
     }
     completeCheck()
@@ -195,15 +195,10 @@ const handleBirthChange = (e) => {
 const completeCheck = () => {
     const $completes = document.querySelectorAll('form > div > span')
     const $next = document.querySelector('header button')
-    let isComplete = true;
 
-    $completes.forEach(complete => {
-        if (!complete.classList.contains('complete')) {
-            isComplete = false;
-        }
-    })
+    const isCompleted = Array.from($completes).every(complete => complete.classList.contains('complete'));
 
-    if (isComplete) {
+    if (isCompleted) {
         $next.classList.add('complete')
     } else {
         $next.classList.remove('complete')
@@ -219,11 +214,11 @@ const handleNextClick = (e) => {
 
 const init = () => {
     const $inputs = document.querySelectorAll('input')
-    const $eInput = document.querySelector('input[name=email]')
-    const $eBtn = document.querySelector('.email_wrapper > form > button')
-    const $nInput = document.querySelector('input[name=nickname]')
-    const $pInput = document.querySelector('input[name=password]')
-    const $bInput = document.querySelector('input[name=birth]')
+    const $emailInput = document.querySelector('input[name=email]')
+    const $emailBtn = document.querySelector('.email_wrapper > form > button')
+    const $nameInput = document.querySelector('input[name=nickname]')
+    const $pwdInput = document.querySelector('input[name=password]')
+    const $birthInput = document.querySelector('input[name=birth]')
     const $next = document.querySelector('header button')
 
     $inputs.forEach(input => {
@@ -231,11 +226,11 @@ const init = () => {
         input.addEventListener('focusout', handleFocusOut)
     })
 
-    $eInput.addEventListener('keyup', handleEmailChange)
-    $eBtn.addEventListener('click', handleEmailBtnClick);
-    $nInput.addEventListener('keyup', handleNicknameChange)
-    $pInput.addEventListener('keyup', handlePwdChange)
-    $bInput.addEventListener('keyup', handleBirthChange)
+    $emailInput.addEventListener('keyup', handleEmailChange)
+    $emailBtn.addEventListener('click', handleEmailBtnClick);
+    $nameInput.addEventListener('keyup', handleNicknameChange)
+    $pwdInput.addEventListener('keyup', handlePwdChange)
+    $birthInput.addEventListener('keyup', handleBirthChange)
     $next.addEventListener('click', handleNextClick)
 }
 

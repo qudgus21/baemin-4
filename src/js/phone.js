@@ -1,12 +1,13 @@
 const handlePhoneInputChange = (e) => {
-    const $pCancle = e.target.nextSibling.childNodes[0]
-    const $pCheck = $pCancle.nextSibling
+
+    const $pwdCancleBtn = e.target.nextSibling.childNodes[0]
+    const $pwdCheck = $pwdCancleBtn.nextSibling
 
     let value = e.target.value
 
-    $pCancle.classList.add('show')
+    $pwdCancleBtn.classList.add('show')
     if (value.length === 0) {
-        $pCancle.classList.remove('show')
+        $pwdCancleBtn.classList.remove('show')
     }
 
     if (e.keyCode !== 8) {
@@ -19,19 +20,19 @@ const handlePhoneInputChange = (e) => {
     }
 
     if (value.match(/^\d{3}-\d{3,4}-\d{4}$/)) {
-        $pCheck.classList.add('complete')
+        $pwdCheck.classList.add('complete')
     } else {
-        $pCheck.classList.remove('complete')
+        $pwdCheck.classList.remove('complete')
     }
     completeCheck()
 }
 
 const handleCancleClick = (e) => {
     e.preventDefault()
-    const $pCheck = e.target.nextSibling
+    const $pwdCheck = e.target.nextSibling
     e.target.parentNode.previousSibling.value = ''
     e.target.classList.remove('show')
-    $pCheck.classList.remove('complete')
+    $pwdCheck.classList.remove('complete')
     completeCheck()
 }
 
@@ -73,14 +74,14 @@ const makeRandomCode = (n) => {
 
 
 const completeCheck = () => {
-    const $pInput = document.querySelector('input[name=phone]')
-    const $cInput = document.querySelector('input[name=cetify_num]')
-    const $next = document.querySelector('header button')
+    const $pwdInput = document.querySelector('input[name=phone]')
+    const $certifyInput = document.querySelector('input[name=cetify_num]')
+    const $nextBtn = document.querySelector('header button')
 
-    if ($pInput.value.match(/^\d{3}-\d{3,4}-\d{4}$/) && $cInput.value.match(/^[0-9]{4}$/)) {
-        $next.classList.add('complete')
+    if ($pwdInput.value.match(/^\d{3}-\d{3,4}-\d{4}$/) && $certifyInput.value.match(/^[0-9]{4}$/)) {
+        $nextBtn.classList.add('complete')
     } else {
-        $next.classList.remove('complete')
+        $nextBtn.classList.remove('complete')
     }
 }
 
@@ -90,43 +91,41 @@ const handleCertificationChange = () => {
 
 const handleCertificationFocusIn = (e) => {
     e.target.parentNode.previousSibling.classList.add('focus')
-
 }
 
 const handleCertificationFocusOut = (e) => {
     e.target.parentNode.previousSibling.classList.remove('focus')
 }
 
-const handleNextClick = (e) => {
+const handleNextBtnClick = (e) => {
     if (e.target.classList.contains('complete')) {
         window.location.href = '/signup/register';
     }
 }
 
 const init = () => {
+    const $pwdInput = document.querySelector('.phone_wrapper form input')
+    const $pwdCancleBtn = document.querySelector('.phone_wrapper form button')
+    const $certifyBtn = document.querySelector('.input_certify > button')
+    const $recertifyBtn = document.querySelector('.input_certify > div > button')
+    const $certifyInput = document.querySelector('input[name=cetify_num]')
+    const $nextBtn = document.querySelector('header button')
 
-    const $pInput = document.querySelector('.phone_wrapper form input')
-    const $pCancle = document.querySelector('.phone_wrapper form button')
-    const $cBtn = document.querySelector('.input_certify > button')
-    const $cRe = document.querySelector('.input_certify > div > button')
-    const $cInput = document.querySelector('input[name=cetify_num]')
-    const $next = document.querySelector('header button')
 
+    $pwdInput.addEventListener('keyup', handlePhoneInputChange)
+    $pwdInput.addEventListener('focusin', handlePhoneInputFocusIn)
+    $pwdInput.addEventListener('focusout', handlePhoneInputFocusOut)
 
-    $pInput.addEventListener('keyup', handlePhoneInputChange)
-    $pInput.addEventListener('focusin', handlePhoneInputFocusIn)
-    $pInput.addEventListener('focusout', handlePhoneInputFocusOut)
+    $certifyInput.addEventListener('keyup', handleCertificationChange)
+    $certifyInput.addEventListener('focusin', handleCertificationFocusIn)
+    $certifyInput.addEventListener('focusout', handleCertificationFocusOut)
 
-    $cInput.addEventListener('keyup', handleCertificationChange)
-    $cInput.addEventListener('focusin', handleCertificationFocusIn)
-    $cInput.addEventListener('focusout', handleCertificationFocusOut)
-
-    $pCancle.addEventListener('click', handleCancleClick)
-    $cBtn.addEventListener('click', handleCertificationClick)
-    $cRe.addEventListener('click', handleReCertification)
-    $next.addEventListener('click', handleNextClick)
-
+    $pwdCancleBtn.addEventListener('click', handleCancleClick)
+    $certifyBtn.addEventListener('click', handleCertificationClick)
+    $recertifyBtn.addEventListener('click', handleReCertification)
+    $nextBtn.addEventListener('click', handleNextBtnClick)
 }
 
 init();
+
 
