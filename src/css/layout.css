@@ -25,3 +25,7 @@
   height: 15px;
   background-color: var(--color-white0);
 }
+
+.close-layout > div > div {
+  padding: 20px;
+}
