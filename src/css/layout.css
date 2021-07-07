@@ -19,9 +19,9 @@
   z-index: 10;
 }
 
-.close-button {
-  margin-left: 15px;
-  width: 25px;
-  height: 17px;
+.close-button img {
+  margin-left: 10px;
+  width: 15px;
+  height: 15px;
   background-color: var(--color-white0);
 }
