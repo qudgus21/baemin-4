@@ -6,7 +6,7 @@ let router = express.Router();
 
 router.get("/phone", signup.phone);
 
-router.get("/userInfo", signup.userInfo);
+router.get("/register", signup.register);
 
 
 module.exports = router;
