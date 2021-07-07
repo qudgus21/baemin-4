@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(cahrset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", type="text/css" href="/css/reset.css")
+    link(rel="stylesheet", type="text/css" href="/css/layout.css")
+    link(rel="stylesheet", type="text/css" href="/css/phone.css")
+    title study pug
+  body 
+    div.layout 
+        header
+            img(src='../static/images/arrow.png')
+            h3 회원가입
+            button 다음
+        section.phone_wrapper
+            label(for="phone") 휴대전화
+            form
+                input(type="text", name="phone", placeholder="전화번호를 입력해주세요")
+                div
+                    button x
+                    span v
+        section.input_certify
+            button 인증번호 받기
+            div.hidden
+                label(for="cetify_num") 인증번호
+                form
+                    input(type="number", name="cetify_num", placeholder="인증번호를 입력해주세요")
+                button 인증번호 다시받기
+    script(src="/js/phone.js")
+
+
+
