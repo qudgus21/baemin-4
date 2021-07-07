@@ -1,4 +1,25 @@
-extends layout.pug
+extends close-layout.pug
 
-block layout
+block close-layout
   div.login
+    div.login-form-wrapper
+      form
+        input(placeholder="아이디 또는 이메일")#eamil-input
+        input(placeholder="비밀번호")#password-input
+        input(type="submit" value="로그인")
+    div.find-button-wrapper
+      button 아이디 찾기
+      div.gap
+      button 비밀번호 찾기
+    div.socail-login-wrapper 
+      button#facebook 
+        img(src="images/facebook-logo.png")
+        span 페이스북으로 로그인
+      button#naver 
+        img(src="images/naver-logo.png")
+        span 네이버로 로그인
+      button#apple
+        img(src="images/apple-logo.png")
+        span Apple로 로그인
+      p 혹시, 배달의민족이 처음이신가요? 
+        a.signup 회원가입
