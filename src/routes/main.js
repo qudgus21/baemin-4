@@ -1,7 +1,7 @@
 let express = require("express");
-let main = require("../controllers/main");
+let home = require("../controllers/home.js");
 let router = express.Router();
 
-router.get("/", main.page);
+router.get("/", home.page);
 
 module.exports = router;
