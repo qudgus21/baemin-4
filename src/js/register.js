@@ -24,7 +24,7 @@ const handleEmailBtnClick = (e) => {
     const $emailCancleBtn = e.target.previousSibling.childNodes[0]
     const $emailCheck = e.target.previousSibling.childNodes[1]
     const $emailInput = e.target.parentNode.firstChild
-    const $userInfoWrapper = document.querySelector('.info')
+    const $userInfoWrapper = document.querySelector('.u_container .info')
     if ($emailInput.value) {
         $emailCancleBtn.classList.add('none')
         $emailCheck.classList.add('complete')
@@ -32,7 +32,7 @@ const handleEmailBtnClick = (e) => {
         $userInfoWrapper.classList.remove('none')
         $emailInput.disabled = true;
     }
-    completeCheck()
+    completeRegisterCheck()
 }
 
 const handleNicknameChange = (e) => {
@@ -42,7 +42,7 @@ const handleNicknameChange = (e) => {
     } else {
         $nameCheck.classList.remove('complete')
     }
-    completeCheck()
+    completeRegisterCheck()
 }
 
 
@@ -140,7 +140,7 @@ const handlePwdChange = (e) => {
         $pwdAlertMsg.classList.remove('alert')
         $form.classList.remove('b_red')
     }
-    completeCheck()
+    completeRegisterCheck()
 }
 
 const birthValidation = (birth) => {
@@ -188,13 +188,13 @@ const handleBirthChange = (e) => {
         $birthAlertMsg.classList.remove('alert')
         $form.classList.remove('b_red')
     }
-    completeCheck()
+    completeRegisterCheck()
 }
 
 
-const completeCheck = () => {
-    const $completes = document.querySelectorAll('form > div > span')
-    const $next = document.querySelector('header button')
+const completeRegisterCheck = () => {
+    const $completes = document.querySelectorAll('.u_container form > div > span')
+    const $next = document.querySelector('.u_container header button')
 
     const isCompleted = Array.from($completes).every(complete => complete.classList.contains('complete'));
 
@@ -205,33 +205,201 @@ const completeCheck = () => {
     }
 }
 
-const handleNextClick = (e) => {
+const handleCompleteClick = (e) => {
+    const $phoneInput = document.querySelector('.p_container .phone_wrapper form input')
+    const $emailInput = document.querySelector('.u_container input[name=email]')
+    const $nameInput = document.querySelector('.u_container input[name=nickname]')
+    const $pwdInput = document.querySelector('.u_container input[name=password]')
+    const $birthInput = document.querySelector('.u_container input[name=birth]')
+
     if (e.target.classList.contains('complete')) {
-        window.location.href = '/';
+        let phone = $phoneInput.value;
+        let email = $emailInput.value;
+        let name = $nameInput.value;
+        let pwd = $pwdInput.value;
+        let birth = $birthInput.value;
+
+        let userData = {
+            method: 'POST',
+            body: JSON.stringify({ phone, email, name, pwd, birth }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+
+        fetch(`/signup/register`, userData)
+            .then(response => response.json())
+            .then(response => {
+                if (response.status === 200) {
+                    window.location.href = '/login'
+                }
+            })
+            .catch(err => {
+                alert('아이디 또는 패스워드를 확인해 주세요.');
+            });
     }
 }
 
 
+const handlePhoneInputChange = (e) => {
+
+    const $phoneCancleBtn = e.target.nextSibling.childNodes[0]
+    const $pwdCheck = $phoneCancleBtn.nextSibling
+
+    let value = e.target.value
+
+    $phoneCancleBtn.classList.add('show')
+    if (value.length === 0) {
+        $phoneCancleBtn.classList.remove('show')
+    }
+
+    if (e.keyCode !== 8) {
+        if (value.length === 3) {
+            e.target.value += '-'
+        }
+        if (value.length === 8) {
+            e.target.value += '-'
+        }
+    }
+
+    if (value.match(/^\d{3}-\d{3,4}-\d{4}$/)) {
+        $pwdCheck.classList.add('complete')
+    } else {
+        $pwdCheck.classList.remove('complete')
+    }
+    completePhoneCheck()
+}
+
+const handleCancleClick = (e) => {
+    e.preventDefault()
+    const $pwdCheck = e.target.nextSibling
+    e.target.parentNode.previousSibling.value = ''
+    e.target.classList.remove('show')
+    $pwdCheck.classList.remove('complete')
+    completePhoneCheck()
+}
+
+const handlePhoneInputFocusIn = (e) => {
+    e.target.parentNode.previousSibling.classList.add('focus')
+}
+
+const handlePhoneInputFocusOut = (e) => {
+    e.target.parentNode.previousSibling.classList.remove('focus')
+}
+
+
+
+const handleCertificationClick = (e) => {
+    setTimeout(() => {
+        e.target.classList.add('none');
+        e.target.nextSibling.classList.remove('hidden')
+        e.target.nextSibling.childNodes[1].childNodes[0].focus()
+        e.target.nextSibling.childNodes[1].childNodes[0].value = makeRandomCode(4)
+        completePhoneCheck()
+    }, 2000)
+}
+
+const handleReCertification = (e) => {
+    setTimeout(() => {
+        e.target.previousSibling.childNodes[0].value = makeRandomCode(4)
+        completePhoneCheck()
+    }, 2000)
+}
+
+
+const makeRandomCode = (n) => {
+    let str = ''
+    for (let i = 0; i < n; i++) {
+        str += Math.floor(Math.random() * 10)
+    }
+    return str
+}
+
+
+const completePhoneCheck = () => {
+    const $phoneInput = document.querySelector('.p_container input[name=phone]')
+    const $certifyInput = document.querySelector('.p_container input[name=cetify_num]')
+    const $nextBtn = document.querySelector('.p_container header button')
+
+    if ($phoneInput.value.match(/^\d{3}-\d{3,4}-\d{4}$/) && $certifyInput.value.match(/^[0-9]{4}$/)) {
+        $nextBtn.classList.add('complete')
+    } else {
+        $nextBtn.classList.remove('complete')
+    }
+}
+
+const handleCertificationChange = () => {
+    completePhoneCheck()
+}
+
+const handleCertificationFocusIn = (e) => {
+    e.target.parentNode.previousSibling.classList.add('focus')
+}
+
+const handleCertificationFocusOut = (e) => {
+    e.target.parentNode.previousSibling.classList.remove('focus')
+}
+
+const handleNextBtnClick = (e) => {
+    const $phoneContainer = document.querySelector('.p_container')
+    const $userContainer = document.querySelector('.u_container')
+
+    if (e.target.classList.contains('complete')) {
+        $phoneContainer.classList.add('none')
+        $userContainer.classList.remove('none')
+    }
+}
+
+const handleBeforeToPhone = (e) => {
+    const $phoneContainer = document.querySelector('.p_container')
+    const $userContainer = document.querySelector('.u_container')
+
+    $phoneContainer.classList.remove('none')
+    $userContainer.classList.add('none')
+}
+
+
 const init = () => {
-    const $inputs = document.querySelectorAll('input')
-    const $emailInput = document.querySelector('input[name=email]')
-    const $emailBtn = document.querySelector('.email_wrapper > form > button')
-    const $nameInput = document.querySelector('input[name=nickname]')
-    const $pwdInput = document.querySelector('input[name=password]')
-    const $birthInput = document.querySelector('input[name=birth]')
-    const $next = document.querySelector('header button')
+    const $inputs = document.querySelectorAll('.u_container input')
+    const $emailInput = document.querySelector('.u_container input[name=email]')
+    const $emailBtn = document.querySelector('.u_container .email_wrapper > form > button')
+    const $nameInput = document.querySelector('.u_container input[name=nickname]')
+    const $pwdInput = document.querySelector('.u_container input[name=password]')
+    const $birthInput = document.querySelector('.u_container input[name=birth]')
+    const $next = document.querySelector('.u_container header button')
+    const $beforeToPhone = document.querySelector('.u_container header img')
+
+
+    const $phoneInput = document.querySelector('.p_container .phone_wrapper form input')
+    const $phoneCancleBtn = document.querySelector('.p_container .phone_wrapper form button')
+    const $certifyBtn = document.querySelector('.p_container .input_certify > button')
+    const $recertifyBtn = document.querySelector('.p_container .input_certify > div > button')
+    const $certifyInput = document.querySelector('.p_container input[name=cetify_num]')
+    const $nextBtn = document.querySelector('.p_container header button')
+
 
     $inputs.forEach(input => {
         input.addEventListener('focusin', handleFocusIn)
         input.addEventListener('focusout', handleFocusOut)
     })
-
     $emailInput.addEventListener('keyup', handleEmailChange)
     $emailBtn.addEventListener('click', handleEmailBtnClick);
     $nameInput.addEventListener('keyup', handleNicknameChange)
     $pwdInput.addEventListener('keyup', handlePwdChange)
     $birthInput.addEventListener('keyup', handleBirthChange)
-    $next.addEventListener('click', handleNextClick)
+    $next.addEventListener('click', handleCompleteClick)
+    $beforeToPhone.addEventListener('click', handleBeforeToPhone)
+
+    $phoneInput.addEventListener('keyup', handlePhoneInputChange)
+    $phoneInput.addEventListener('focusin', handlePhoneInputFocusIn)
+    $phoneInput.addEventListener('focusout', handlePhoneInputFocusOut)
+    $certifyInput.addEventListener('keyup', handleCertificationChange)
+    $certifyInput.addEventListener('focusin', handleCertificationFocusIn)
+    $certifyInput.addEventListener('focusout', handleCertificationFocusOut)
+    $phoneCancleBtn.addEventListener('click', handleCancleClick)
+    $certifyBtn.addEventListener('click', handleCertificationClick)
+    $recertifyBtn.addEventListener('click', handleReCertification)
+    $nextBtn.addEventListener('click', handleNextBtnClick)
 }
 
 
