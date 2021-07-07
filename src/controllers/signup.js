@@ -14,6 +14,13 @@ let signup = {
       res.render("register");
     }
   },
+  terms: (req, res) => {
+    try {
+      res.render("terms");
+    } catch {
+      res.render("terms");
+    }
+  },
 };
 
 module.exports = signup;

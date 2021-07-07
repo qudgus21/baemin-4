@@ -4,3 +4,28 @@
   border: 1px solid var(--color-lightGray0);
   overflow-y: scroll;
 }
+
+.close-layout {
+  position: sticky;
+  top: 0;
+}
+
+.close-layout header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 60px;
+  background-color: var(--color-white0);
+  z-index: 10;
+}
+
+.close-button img {
+  margin-left: 10px;
+  width: 15px;
+  height: 15px;
+  background-color: var(--color-white0);
+}
+
+.close-layout > div > div {
+  padding: 20px;
+}

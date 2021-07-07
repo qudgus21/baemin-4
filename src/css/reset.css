@@ -1,5 +1,5 @@
 :root {
-  --color-baemin0: rgb(95, 190, 187);
+  --color-baemin0: rgb(42, 193, 188);
 
   --color-white0: rgb(255, 255, 255);
 
@@ -16,6 +16,8 @@
   --color-pink0: rgb(218, 76, 147);
 
   --color-green0: rgb(120, 166, 90);
+
+  --color-blue0: rgb(77, 224, 230);
 }
 
 * {
@@ -45,6 +47,7 @@ button {
   border: none;
   outline: none;
   cursor: pointer;
+  background-color: transparent;
 }
 
 input {

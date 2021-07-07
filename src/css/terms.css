@@ -1,0 +1,136 @@
+.signup-terms-page {
+}
+
+.signup-terms-page h1 {
+  font-size: 1.7em;
+  line-height: 1.2em;
+  margin: 0 0 40px 0;
+}
+
+.terms-form-wrapper {
+  display: grid;
+  row-gap: 15px;
+}
+
+.check-box-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.check-box-wrapper input {
+  display: none;
+}
+
+.check-box-wrapper label {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background-color: var(--color-lightGray0);
+  border-radius: 2px;
+}
+
+.check-box-wrapper input:checked + label {
+  background-color: var(--color-baemin0);
+}
+
+.check-box-wrapper label::after {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  z-index: 1;
+}
+
+.check-box-wrapper span {
+  padding-left: 10px;
+  font-size: 1.2em;
+  line-height: 1.2em;
+}
+
+.terms-form-wrapper hr {
+  width: 100%;
+  background-color: var(--color-lightGray1);
+}
+
+.radio-wrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: 45px 1fr 60px;
+  align-items: center;
+  height: 60px;
+  background-color: var(--color-lightGray1);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.radio-wrapper input[type="radio"] {
+  display: none;
+}
+
+.radio-wrapper label {
+  display: block;
+  margin-left: 15px;
+  width: 20px;
+  height: 20px;
+  background-color: var(--color-lightGray0);
+  border-radius: 50%;
+}
+
+.radio-wrapper label::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 21px;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-white0);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.radio-wrapper input:checked + label {
+  background-color: var(--color-baemin0);
+}
+
+.description-wrapper {
+  display: grid;
+  row-gap: 5px;
+}
+
+.radio-wrapper p:not(.description) {
+  font-weight: bold;
+}
+
+.radio-wrapper p.description {
+  background-color: var(--color-lightGray1);
+}
+
+.radio-wrapper img {
+  justify-self: end;
+  width: 100%;
+  height: 60px;
+}
+
+#under-14 {
+  width: 90%;
+}
+
+.terms-form-wrapper input[type="submit"] {
+  margin-top: 100px;
+  height: 50px;
+  font-size: 1.3em;
+  font-weight: 600;
+  color: var(--color-white0);
+  background-color: var(--color-baemin0);
+  border-radius: 5px;
+  cursor: pointer;
+}
