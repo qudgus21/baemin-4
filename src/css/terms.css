@@ -134,3 +134,8 @@
   border-radius: 5px;
   cursor: pointer;
 }
+
+.terms-form-wrapper input[type="submit"]:disabled {
+  background-color: var(--color-lightGray0);
+  cursor: default;
+}
