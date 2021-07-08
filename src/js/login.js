@@ -12,19 +12,25 @@ const checkPasswordInput = (password) => {
   return hasPassword;
 };
 
-const initLoginPage = () => {
+const onClickLoginButtonHandler = async (e) => {
+  e.preventDefault();
+
   const $emailInput = document.querySelector("#email-input");
   const $passwordInput = document.querySelector("#password-input");
-  const $loginButton = document.querySelector('input[type="submit"]');
+  const email = $emailInput.value;
+  const password = $passwordInput.value;
 
-  $loginButton.addEventListener("click", async (e) => {
-    e.preventDefault();
+  const isFillEmailInput = checkEmailInput(email);
+  const isFillPasswordInput = checkPasswordInput(password);
 
-    const $emailInput = document.querySelector("#email-input");
-    const $passwordInput = document.querySelector("#password-input");
-    const email = $emailInput.value;
-    const password = $passwordInput.value;
+  $emailInput.nextElementSibling.style.display = isFillEmailInput
+    ? "none"
+    : "block";
+  $passwordInput.nextElementSibling.style.display = isFillPasswordInput
+    ? "none"
+    : "block";
 
+  if (isFillEmailInput && isFillPasswordInput) {
     const url = new URL(`${ORIGIN}/${LOGIN}`);
     const body = JSON.stringify({ email, password });
 
@@ -35,12 +41,19 @@ const initLoginPage = () => {
         "Content-Type": "application/json",
       },
     });
+
     if (result.ok) {
       location.assign("/");
     } else {
-      alert("이메일 또는 비밀번호가 잘 못 되었습니다.");
+      alert("이메일 또는 비밀번호가 틀립니다.");
     }
-  });
+  }
+};
+
+const initLoginPage = () => {
+  const $loginButton = document.querySelector('input[type="submit"]');
+
+  $loginButton.addEventListener("click", onClickLoginButtonHandler);
 };
 
 initLoginPage();

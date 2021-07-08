@@ -28,6 +28,11 @@
   cursor: pointer;
 }
 
+.login-form-wrapper p.invalidated-message {
+  display: none;
+  color: var(--color-red0);
+}
+
 .find-button-wrapper {
   display: grid;
   grid-template-columns: auto 1px auto;
