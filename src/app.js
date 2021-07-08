@@ -1,22 +1,25 @@
-let express = require("express");
-let cors = require("cors");
-let cookieParser = require("cookie-parser");
+const express = require("express");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const path = require("path");
 
+const headerMiddleware = require("./middlewares/header-middleware.js");
 const serverPort = 8000;
 const app = express();
 
 app.set("view engine", "pug");
 
-app.use("/images", express.static("static/images"));
-app.use("/js", express.static("js"));
-app.use("/static", express.static("static"));
-app.use("/images", express.static("static/images"));
-app.use("/css", express.static("css"));
+app.use("/static", express.static(path.join(__dirname, "static")));
+app.use("/images", express.static(path.join(__dirname, "static/images")));
+app.use("/js", express.static(path.join(__dirname, "js")));
+app.use("/css", express.static(path.join(__dirname, "css")));
 
 app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(headerMiddleware.setEncodingGzip);
 
 app.use("/", require("./routes/main"));
 app.use("/login", require("./routes/login"));
