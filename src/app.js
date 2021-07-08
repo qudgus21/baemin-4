@@ -20,7 +20,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(headerMiddleware.setEncodingGzip);
+// app.use(headerMiddleware.setEncodingGzip);
 
 app.use("/", require("./routes/main"));
 app.use("/login", require("./routes/login"));
