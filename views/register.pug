@@ -21,7 +21,7 @@ html(lang="en")
                     input(type="text", maxlength='13' name="phone", placeholder="전화번호를 입력해주세요")
                     div
                         button x
-                        span v
+                        span.check
             section.input_certify
                 button 인증번호 받기
                 div.hidden
@@ -40,7 +40,7 @@ html(lang="en")
                     input(type="text", name="email", placeholder="이메일을 입력해주세요")
                     div
                         button x    
-                        span.none v
+                        span.none.check
                     button 중복확인        
             div.info.none
                 section.input_wrapper
@@ -48,20 +48,20 @@ html(lang="en")
                     form
                         input(type="text", name="nickname", placeholder="닉네임을 입력해주세요")
                         div
-                            span v
+                            span.check
                 section.input_wrapper
                     label(for="password") 비밀번호
                     form
                         input(type="password", name="password", placeholder="비밀번호를 입력해주세요")
                         div
-                            span v
+                            span.check
                     div.none     
                 section.input_wrapper
                     label(for="birth") 생년월일
                     form
                         input(type="text", name="birth", maxlength='10', placeholder="예) 2000.01.01")
                         div.none
-                            span v
+                            span.check
                     div.none           
     script(src="/js/register.js")
 
