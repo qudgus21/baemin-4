@@ -1,7 +1,7 @@
-const db = require("../utils/nedb.js");
-const bcrypt = require("../utils/bcrypt.js");
+import db from "../utils/nedb.js";
+import { createHash } from "../utils/bcrypt.js";
 
-let signup = {
+const signupController = {
   registerView: (req, res) => {
     try {
       res.render("register");
@@ -12,7 +12,7 @@ let signup = {
 
   register: async (req, res) => {
     const params = req.body;
-    const hash = bcrypt.createHash(params.password);
+    const hash = createHash(params.password);
     const userData = {
       ...params,
     };
@@ -50,4 +50,4 @@ let signup = {
   },
 };
 
-module.exports = signup;
+export default signupController;
