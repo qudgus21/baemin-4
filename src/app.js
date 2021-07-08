@@ -1,17 +1,18 @@
-let express = require("express");
-let cors = require("cors");
-let cookieParser = require("cookie-parser");
+const path = require("path");
+const express = require("express");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
 
 const serverPort = 8000;
 const app = express();
 
 app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "views"));
 
-app.use("/images", express.static("static/images"));
-app.use("/js", express.static("js"));
 app.use("/static", express.static("static"));
-app.use("/images", express.static("static/images"));
-app.use("/css", express.static("css"));
+app.use("/images", express.static(path.join(__dirname, "static/images")));
+app.use("/js", express.static(path.join(__dirname, "js")));
+app.use("/css", express.static(path.join(__dirname, "css")));
 
 app.use(cookieParser());
 app.use(cors());
