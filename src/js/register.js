@@ -26,6 +26,7 @@ const handleEmailBtnClick = (e) => {
     const $emailInput = e.target.parentNode.firstChild
     const $userInfoWrapper = document.querySelector('.u_container .info')
     if ($emailInput.value) {
+        e.target.classList.remove('focus')
         $emailCancleBtn.classList.add('none')
         $emailCheck.classList.add('complete')
         $emailCheck.classList.remove('none')
@@ -321,7 +322,12 @@ const completePhoneCheck = () => {
     const $certifyInput = document.querySelector('.p_container input[name=cetify_num]')
     const $nextBtn = document.querySelector('.p_container header button')
 
-    if ($phoneInput.value.match(/^\d{3}-\d{3,4}-\d{4}$/) && $certifyInput.value.match(/^[0-9]{4}$/)) {
+    const phoneNumber = $phoneInput.value
+    const certifyNumber = $certifyInput.value
+    const phoneValidationRE = /^\d{3}-\d{3,4}-\d{4}$/
+    const certifyRE = /^[0-9]{4}$/
+
+    if (phoneValidationRE.test(phoneNumber) && certifyRE.test(certifyNumber)) {
         $nextBtn.classList.add('complete')
     } else {
         $nextBtn.classList.remove('complete')
