@@ -1,4 +1,5 @@
-export const ORIGIN = "http://localhost:8000";
+const PORT = 8080;
+export const ORIGIN = `http://localhost:${PORT}`;
 export const HOME = "/";
 
 export const LOGIN = "login";

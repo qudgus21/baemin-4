@@ -1,6 +1,6 @@
-const db = require("../utils/nedb.js");
+import db from "../utils/nedb.js";
 
-const findOneUserByEmail = (email) =>
+export const findOneUserByEmail = (email) =>
   new Promise((resolve, reject) => {
     db.findOne({ email }, (err, user) => {
       if (err) {
@@ -10,7 +10,3 @@ const findOneUserByEmail = (email) =>
       }
     });
   });
-
-module.exports = {
-  findOneUserByEmail,
-};
