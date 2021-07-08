@@ -13,10 +13,9 @@ let signup = {
 
 
   register: async (req, res) => {
-    let params = req.body
+    const params = req.body
     const { password, salt } = await crypto(params.pwd);
-
-    let userData = {
+    const userData = {
       ...params
     }
     userData.pwd = password;
