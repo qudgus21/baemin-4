@@ -3,7 +3,8 @@ const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
-const serverPort = 80;
+const serverPort = process.env.PORT || 80;
+
 const app = express();
 
 app.set("view engine", "pug");
