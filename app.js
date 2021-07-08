@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
-const serverPort = 80;
+const serverPort = 3000;
 const app = express();
 
 app.set("view engine", "pug");
@@ -26,3 +26,4 @@ app.use("/signup", require("./routes/signup"));
 app.listen(serverPort, (req, res) => {
   console.log(`Sever is running on port ${serverPort}!`);
 });
+s
