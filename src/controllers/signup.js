@@ -33,8 +33,19 @@ let signup = {
   terms: (req, res) => {
     try {
       res.render("terms");
-    } catch {
+    } catch (err) {
+      console.error(err);
       res.render("terms");
+    }
+  },
+  checkTerms: (req, res) => {
+    try {
+      res.json({
+        message: "test",
+        ...req.body,
+      });
+    } catch (err) {
+      console.error(err);
     }
   },
 };
