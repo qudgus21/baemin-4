@@ -1,13 +1,14 @@
+const path = require("path");
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-const path = require("path");
 
 const headerMiddleware = require("./middlewares/header-middleware.js");
 const serverPort = 8000;
 const app = express();
 
 app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "views"));
 
 app.use("/static", express.static(path.join(__dirname, "static")));
 app.use("/images", express.static(path.join(__dirname, "static/images")));
