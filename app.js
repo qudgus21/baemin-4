@@ -26,4 +26,3 @@ app.use("/signup", require("./routes/signup"));
 app.listen(serverPort, (req, res) => {
   console.log(`Sever is running on port ${serverPort}!`);
 });
-s
