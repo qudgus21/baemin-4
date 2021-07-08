@@ -1,13 +1,14 @@
-let express = require("express");
-let signup = require("../controllers/signup");
-let router = express.Router();
+import { Router } from "express";
+import signupController from "../controllers/signup.js";
 
-router.get("/register", signup.registerView);
+const signupRouter = Router();
 
-router.post("/register", signup.register);
+signupRouter.get("/register", signupController.registerView);
 
-router.get("/terms", signup.terms);
+signupRouter.post("/register", signupController.register);
 
-router.post("/terms", signup.checkTerms);
+signupRouter.get("/terms", signupController.terms);
 
-module.exports = router;
+signupRouter.post("/terms", signupController.checkTerms);
+
+export default signupRouter;

@@ -1,5 +1,5 @@
-const { verifyPassword } = require("../utils/bcrypt.js");
-const { findOneUserByEmail } = require("../repository/user-repository.js");
+import { verifyPassword } from "../utils/bcrypt.js";
+import { findOneUserByEmail } from "../repository/user-repository.js";
 
 const loginController = {
   page: (req, res) => {
@@ -48,4 +48,4 @@ const loginController = {
   },
 };
 
-module.exports = loginController;
+export default loginController;

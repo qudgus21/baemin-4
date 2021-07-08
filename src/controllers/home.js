@@ -1,7 +1,6 @@
-const home = {
+const homeController = {
   page: (req, res) => {
     res.render("home");
   },
 };
-
-module.exports = home;
+export default homeController;
