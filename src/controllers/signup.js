@@ -1,8 +1,7 @@
-let db = require('../utils/nedb');
-let crypto = require('../utils/crypto')
+const db = require("../utils/nedb.js");
+const bcrypt = require("../utils/bcrypt.js");
 
 let signup = {
-
   registerView: (req, res) => {
     try {
       res.render("register");
@@ -11,16 +10,14 @@ let signup = {
     }
   },
 
-
   register: async (req, res) => {
-    const params = req.body
-    const { password, salt } = await crypto(params.pwd);
+    const params = req.body;
+    const hash = bcrypt.createHash(params.password);
     const userData = {
-      ...params
-    }
-    userData.pwd = password;
-    userData.salt = salt;
+      ...params,
+    };
 
+    userData.password = hash;
 
     db.insert(userData, (err, row) => {
       if (err !== null) {
@@ -29,10 +26,9 @@ let signup = {
       }
       res.json({
         status: 200,
-      })
+      });
     });
   },
-
 
   terms: (req, res) => {
     try {
