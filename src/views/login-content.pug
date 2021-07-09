@@ -1,0 +1,29 @@
+extends close-layout.pug
+
+block content
+  div.login-page
+    div.login-form-wrapper
+      form
+        input(placeholder="아이디 또는 이메일" type="email")#email-input
+        p.invalidated-message 이메일을 입력해주세요
+        input(placeholder="비밀번호" type="password")#password-input
+        p.invalidated-message 비밀번호를 입력해주세요
+        input(type="submit" value="로그인")
+
+    div.find-button-wrapper
+      button 아이디 찾기
+      div.gap
+      button 비밀번호 찾기
+      
+    div.socail-login-wrapper 
+      button#facebook 
+        img(src="/images/facebook-logo.png")
+        span 페이스북으로 로그인
+      button#naver 
+        img(src="/images/naver-logo.png")
+        span 네이버로 로그인
+      button#apple
+        img(src="/images/apple-logo.png")
+        span Apple로 로그인
+      p 혹시, 배달의민족이 처음이신가요? 
+        a(href="/signup").signup 회원가입

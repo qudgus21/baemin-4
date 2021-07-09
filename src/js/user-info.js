@@ -23,7 +23,7 @@ const handleEmailBtnClick = (e) => {
   const $emailCancleBtn = e.target.previousSibling.childNodes[0];
   const $emailCheck = e.target.previousSibling.childNodes[1];
   const $emailInput = e.target.parentNode.firstChild;
-  const $userInfoWrapper = document.querySelector(".u_container .info");
+  const $userInfoWrapper = document.querySelector("#user-info-page .info");
   if ($emailInput.value) {
     e.target.classList.remove("focus");
     $emailCancleBtn.classList.add("none");
@@ -190,9 +190,9 @@ const handleBirthChange = (e) => {
 
 const completeRegisterCheck = () => {
   const $completes = document.querySelectorAll(
-    ".u_container form > div > span"
+    "#user-info-page form > div > span"
   );
-  const $next = document.querySelector(".u_container header button");
+  const $next = document.querySelector("#user-info-page header button");
 
   const isCompleted = Array.from($completes).every((complete) =>
     complete.classList.contains("complete")
@@ -207,14 +207,20 @@ const completeRegisterCheck = () => {
 
 const handleCompleteClick = (e) => {
   const $phoneInput = document.querySelector(
-    ".p_container .phone_wrapper form input"
+    "#phone-page .phone_wrapper form input"
   );
-  const $emailInput = document.querySelector(".u_container input[name=email]");
+  const $emailInput = document.querySelector(
+    "#user-info-page input[name=email]"
+  );
   const $nameInput = document.querySelector(
-    ".u_container input[name=nickname]"
+    "#user-info-page input[name=nickname]"
   );
-  const $pwdInput = document.querySelector(".u_container input[name=password]");
-  const $birthInput = document.querySelector(".u_container input[name=birth]");
+  const $pwdInput = document.querySelector(
+    "#user-info-page input[name=password]"
+  );
+  const $birthInput = document.querySelector(
+    "#user-info-page input[name=birth]"
+  );
 
   if (e.target.classList.contains("complete")) {
     let phone = $phoneInput.value;
@@ -244,155 +250,59 @@ const handleCompleteClick = (e) => {
   }
 };
 
-const handlePhoneInputChange = (e) => {
-  const $phoneCancleBtn = e.target.nextSibling.childNodes[0];
-  const $pwdCheck = $phoneCancleBtn.nextSibling;
-
-  let value = e.target.value;
-
-  $phoneCancleBtn.classList.add("show");
-  if (value.length === 0) {
-    $phoneCancleBtn.classList.remove("show");
-  }
-
-  if (e.keyCode !== 8) {
-    if (value.length === 3) {
-      e.target.value += "-";
-    }
-    if (value.length === 8) {
-      e.target.value += "-";
-    }
-  }
-
-  if (value.match(/^\d{3}-\d{3,4}-\d{4}$/)) {
-    $pwdCheck.classList.add("complete");
-  } else {
-    $pwdCheck.classList.remove("complete");
-  }
-  completePhoneCheck();
-};
-
-const handleCancleClick = (e) => {
-  e.preventDefault();
-  const $pwdCheck = e.target.nextSibling;
-  e.target.parentNode.previousSibling.value = "";
-  e.target.classList.remove("show");
-  $pwdCheck.classList.remove("complete");
-  completePhoneCheck();
-};
-
-const handlePhoneInputFocusIn = (e) => {
-  e.target.parentNode.previousSibling.classList.add("focus");
-};
-
-const handlePhoneInputFocusOut = (e) => {
-  e.target.parentNode.previousSibling.classList.remove("focus");
-};
-
-const handleCertificationClick = (e) => {
-  setTimeout(() => {
-    e.target.classList.add("none");
-    e.target.nextSibling.classList.remove("hidden");
-    e.target.nextSibling.childNodes[1].childNodes[0].focus();
-    e.target.nextSibling.childNodes[1].childNodes[0].value = makeRandomCode(4);
-    completePhoneCheck();
-  }, 2000);
-};
-
-const handleReCertification = (e) => {
-  setTimeout(() => {
-    e.target.previousSibling.childNodes[0].value = makeRandomCode(4);
-    completePhoneCheck();
-  }, 2000);
-};
-
-const makeRandomCode = (n) => {
-  let str = "";
-  for (let i = 0; i < n; i++) {
-    str += Math.floor(Math.random() * 10);
-  }
-  return str;
-};
-
-const completePhoneCheck = () => {
-  const $phoneInput = document.querySelector(".p_container input[name=phone]");
-  const $certifyInput = document.querySelector(
-    ".p_container input[name=cetify_num]"
-  );
-  const $nextBtn = document.querySelector(".p_container header button");
-
-  const phoneNumber = $phoneInput.value;
-  const certifyNumber = $certifyInput.value;
-  const phoneValidationRE = /^\d{3}-\d{3,4}-\d{4}$/;
-  const certifyRE = /^[0-9]{4}$/;
-
-  if (phoneValidationRE.test(phoneNumber) && certifyRE.test(certifyNumber)) {
-    $nextBtn.classList.add("complete");
-  } else {
-    $nextBtn.classList.remove("complete");
-  }
-};
-
-const handleCertificationChange = () => {
-  completePhoneCheck();
-};
-
-const handleCertificationFocusIn = (e) => {
-  e.target.parentNode.previousSibling.classList.add("focus");
-};
-
-const handleCertificationFocusOut = (e) => {
-  e.target.parentNode.previousSibling.classList.remove("focus");
-};
-
-const handleNextBtnClick = (e) => {
-  const $phoneContainer = document.querySelector(".p_container");
-  const $userContainer = document.querySelector(".u_container");
-
-  if (e.target.classList.contains("complete")) {
-    $phoneContainer.classList.add("none");
-    $userContainer.classList.remove("none");
-  }
-};
-
 const handleBeforeToPhone = (e) => {
-  const $phoneContainer = document.querySelector(".p_container");
-  const $userContainer = document.querySelector(".u_container");
+  const $phoneContainer = document.querySelector("#phone-page");
+  const $userContainer = document.querySelector("#user-info-page");
 
   $phoneContainer.classList.remove("none");
   $userContainer.classList.add("none");
 };
 
-const init = () => {
-  const $inputs = document.querySelectorAll(".u_container input");
-  const $emailInput = document.querySelector(".u_container input[name=email]");
+const getInfo = () => {
+  const $emailInput = document.querySelector("input[name=email]");
+  const $nicknameInput = document.querySelector("input[name=nickname]");
+  const $passwordInput = document.querySelector("input[name=password]");
+  const $birthInput = document.querySelector("input[name=birth]");
+
+  const info = {
+    email: $emailInput.value,
+    nickname: $nicknameInput.value,
+    password: $passwordInput.value,
+    birth: $birthInput.value,
+  };
+
+  return info;
+};
+
+let isInit = false;
+
+const initUserInfoPage = ({
+  onClickPrevButtonHandler,
+  onClickNextButtonHandler,
+}) => {
+  if (isInit) return;
+  isInit = true;
+
+  const $inputs = document.querySelectorAll("#user-info-page input");
+  const $emailInput = document.querySelector(
+    "#user-info-page input[name=email]"
+  );
   const $emailBtn = document.querySelector(
-    ".u_container .email_wrapper > form > button"
+    "#user-info-page .email_wrapper > form > button"
   );
   const $nameInput = document.querySelector(
-    ".u_container input[name=nickname]"
+    "#user-info-page input[name=nickname]"
   );
-  const $pwdInput = document.querySelector(".u_container input[name=password]");
-  const $birthInput = document.querySelector(".u_container input[name=birth]");
-  const $next = document.querySelector(".u_container header button");
-  const $beforeToPhone = document.querySelector(".u_container header img");
+  const $pwdInput = document.querySelector(
+    "#user-info-page input[name=password]"
+  );
+  const $birthInput = document.querySelector(
+    "#user-info-page input[name=birth]"
+  );
+  const $prevButton = document.querySelector("#go-back-button");
+  const $completeButton = document.querySelector("#complete-button");
 
-  const $phoneInput = document.querySelector(
-    ".p_container .phone_wrapper form input"
-  );
-  const $phoneCancleBtn = document.querySelector(
-    ".p_container .phone_wrapper form button"
-  );
-  const $certifyBtn = document.querySelector(
-    ".p_container .input_certify > button"
-  );
-  const $recertifyBtn = document.querySelector(
-    ".p_container .input_certify > div > button"
-  );
-  const $certifyInput = document.querySelector(
-    ".p_container input[name=cetify_num]"
-  );
-  const $nextBtn = document.querySelector(".p_container header button");
+  console.log($completeButton);
 
   $inputs.forEach((input) => {
     input.addEventListener("focusin", handleFocusIn);
@@ -403,19 +313,11 @@ const init = () => {
   $nameInput.addEventListener("keyup", handleNicknameChange);
   $pwdInput.addEventListener("keyup", handlePwdChange);
   $birthInput.addEventListener("keyup", handleBirthChange);
-  $next.addEventListener("click", handleCompleteClick);
-  $beforeToPhone.addEventListener("click", handleBeforeToPhone);
-
-  $phoneInput.addEventListener("keyup", handlePhoneInputChange);
-  $phoneInput.addEventListener("focusin", handlePhoneInputFocusIn);
-  $phoneInput.addEventListener("focusout", handlePhoneInputFocusOut);
-  $certifyInput.addEventListener("keyup", handleCertificationChange);
-  $certifyInput.addEventListener("focusin", handleCertificationFocusIn);
-  $certifyInput.addEventListener("focusout", handleCertificationFocusOut);
-  $phoneCancleBtn.addEventListener("click", handleCancleClick);
-  $certifyBtn.addEventListener("click", handleCertificationClick);
-  $recertifyBtn.addEventListener("click", handleReCertification);
-  $nextBtn.addEventListener("click", handleNextBtnClick);
+  $prevButton.addEventListener("click", onClickPrevButtonHandler);
+  $completeButton.addEventListener("click", () => {
+    const info = getInfo();
+    onClickNextButtonHandler(info);
+  });
 };
 
-init();
+export default initUserInfoPage;

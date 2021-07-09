@@ -5,31 +5,33 @@
   overflow-y: scroll;
 }
 
-.close-layout {
+.sub-layout header {
   position: sticky;
   top: 0;
-}
-
-.close-layout header {
-  display: flex;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: 50px 1fr 50px;
   align-items: center;
   height: 60px;
   background-color: var(--color-white0);
   z-index: 10;
 }
 
-.close-button img {
-  margin-left: 10px;
+.sub-layout header h1 {
+  font-size: 1.4rem;
+  line-height: 1.4rem;
+  text-align: center;
+}
+
+.nav-button img {
   width: 15px;
   height: 15px;
   background-color: var(--color-white0);
 }
 
-.close-layout > div > div {
+.sub-layout > div {
   padding: 20px;
 }
 
-.register_layout .none {
-  display: none;
+#back-layout #go-next-button {
+  font-weight: bold;
 }

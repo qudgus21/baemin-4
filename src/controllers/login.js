@@ -2,7 +2,7 @@ import { verifyPassword } from "../utils/bcrypt.js";
 import { findOneUserByEmail } from "../repository/user-repository.js";
 
 const loginController = {
-  page: (req, res) => {
+  renderView: (req, res) => {
     try {
       res.render("login", { message: "test~" });
     } catch (error) {

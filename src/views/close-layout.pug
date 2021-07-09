@@ -1,13 +1,8 @@
-extends main.pug
-
-block layout 
-  div.close-layout
-    header
-      button.close-button
-        img(src="/images/close.png")
-    div.content
-      block close-layout
-      
-block script
-  script(type="module" src="/js/close-layout.js")
+div#close-layout.sub-layout
+  header
+    button#close-button.nav-button.prev-button
+      img(src="/images/close.png")
+    block title
+  div#close-layout-content
+    block content
 
