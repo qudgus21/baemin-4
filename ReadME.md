@@ -9,7 +9,7 @@
 
 ### preview
 
-<img width="180" alt="무제 11" src="https://user-images.githubusercontent.com/47776356/125057881-aaf0b880-e0e4-11eb-9080-3f5300a107eb.png"> | <img width="180" alt="무제 12" src="https://user-images.githubusercontent.com/47776356/125059229-0cfded80-e0e6-11eb-99dd-01b3e82d631d.png"> | <img width="180" alt="무제 13" src="https://user-images.githubusercontent.com/47776356/125059360-33bc2400-e0e6-11eb-9ac0-81fa3ef88299.png"> | <img width="180" alt="무제 14" src="https://user-images.githubusercontent.com/47776356/125059394-3dde2280-e0e6-11eb-97d5-972d8fabdf8b.png"> | <img width="180" alt="무제 15" src="https://user-images.githubusercontent.com/47776356/125059498-59e1c400-e0e6-11eb-81cc-c6fa5a8b504d.png">
+<img width="150" alt="무제 11" src="https://user-images.githubusercontent.com/47776356/125057881-aaf0b880-e0e4-11eb-9080-3f5300a107eb.png"> | <img width="150" alt="무제 12" src="https://user-images.githubusercontent.com/47776356/125059229-0cfded80-e0e6-11eb-99dd-01b3e82d631d.png"> | <img width="150" alt="무제 13" src="https://user-images.githubusercontent.com/47776356/125059360-33bc2400-e0e6-11eb-9ac0-81fa3ef88299.png"> | <img width="150" alt="무제 14" src="https://user-images.githubusercontent.com/47776356/125059394-3dde2280-e0e6-11eb-97d5-972d8fabdf8b.png"> | <img width="150" alt="무제 15" src="https://user-images.githubusercontent.com/47776356/125059498-59e1c400-e0e6-11eb-81cc-c6fa5a8b504d.png">
 
 
 ### 실행방법
