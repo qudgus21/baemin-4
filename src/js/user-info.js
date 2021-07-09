@@ -192,17 +192,13 @@ const completeRegisterCheck = () => {
   const $completes = document.querySelectorAll(
     "#user-info-page form > div > span"
   );
-  const $next = document.querySelector("#user-info-page header button");
+  const $completeButton = document.querySelector("#complete-button");
 
   const isCompleted = Array.from($completes).every((complete) =>
     complete.classList.contains("complete")
   );
 
-  if (isCompleted) {
-    $next.classList.add("complete");
-  } else {
-    $next.classList.remove("complete");
-  }
+  $completeButton.disabled = !isCompleted;
 };
 
 const getInfo = () => {
@@ -249,7 +245,7 @@ const initUserInfoPage = ({
   const $prevButton = document.querySelector("#go-back-button");
   const $completeButton = document.querySelector("#complete-button");
 
-  console.log($completeButton);
+  $completeButton.disabled = true;
 
   $inputs.forEach((input) => {
     input.addEventListener("focusin", handleFocusIn);
