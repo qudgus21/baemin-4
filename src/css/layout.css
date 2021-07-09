@@ -32,6 +32,11 @@
   padding: 20px;
 }
 
-#back-layout #go-next-button {
+.sub-layout header button {
   font-weight: bold;
+}
+
+.sub-layout header button:disabled {
+  color: var(--color-lightGray0);
+  cursor: default;
 }

@@ -1,7 +1,8 @@
 const handleEmailChange = (e) => {
   const $emailCancleBtn = e.target.nextSibling.childNodes[0];
   const $emailBtn = e.target.parentNode.lastChild;
-  const emailRE = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+  const emailRE =
+    /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
   if (emailRE.test(e.target.value)) {
     $emailCancleBtn.classList.remove("none");
@@ -151,7 +152,8 @@ const birthValidation = (birth) => {
   let y = parseInt(date[0], 10),
     m = parseInt(date[1], 10),
     d = parseInt(date[2], 10);
-  let dateRegex = /^(?=\d)(?:(?:31(?!.(?:0?[2469]|11))|(?:30|29)(?!.0?2)|29(?=.0?2.(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00)))(?:\x20|$))|(?:2[0-8]|1\d|0?[1-9]))([-.\/])(?:1[012]|0?[1-9])\1(?:1[6-9]|[2-9]\d)?\d\d(?:(?=\x20\d)\x20|$))?(((0?[1-9]|1[012])(:[0-5]\d){0,2}(\x20[AP]M))|([01]\d|2[0-3])(:[0-5]\d){1,2})?$/;
+  let dateRegex =
+    /^(?=\d)(?:(?:31(?!.(?:0?[2469]|11))|(?:30|29)(?!.0?2)|29(?=.0?2.(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00)))(?:\x20|$))|(?:2[0-8]|1\d|0?[1-9]))([-.\/])(?:1[012]|0?[1-9])\1(?:1[6-9]|[2-9]\d)?\d\d(?:(?=\x20\d)\x20|$))?(((0?[1-9]|1[012])(:[0-5]\d){0,2}(\x20[AP]M))|([01]\d|2[0-3])(:[0-5]\d){1,2})?$/;
   let validation = /^[0-9]{4}.[0-9]{2}.[0-9]{2}/;
   return validation.test(birth) && dateRegex.test(d + "-" + m + "-" + y);
 };
@@ -206,17 +208,13 @@ const completeRegisterCheck = () => {
   const $completes = document.querySelectorAll(
     "#user-info-page form > div > span"
   );
-  const $next = document.querySelector("#user-info-page header button");
+  const $completeButton = document.querySelector("#complete-button");
 
   const isCompleted = Array.from($completes).every((complete) =>
     complete.classList.contains("complete")
   );
 
-  if (isCompleted) {
-    $next.classList.add("complete");
-  } else {
-    $next.classList.remove("complete");
-  }
+  $completeButton.disabled = !isCompleted;
 };
 
 const getInfo = () => {
@@ -262,6 +260,8 @@ const initUserInfoPage = ({
   );
   const $prevButton = document.querySelector("#go-back-button");
   const $completeButton = document.querySelector("#complete-button");
+
+  $completeButton.disabled = true;
 
   const $emailCancleBtn = $emailBtn.previousSibling.childNodes[0];
   $emailCancleBtn.addEventListener("click", handleEmailCancle);
