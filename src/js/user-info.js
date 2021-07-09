@@ -195,7 +195,9 @@ const handleBirthChange = (e) => {
 
 const handleEmailCancle = (e) => {
   e.preventDefault();
-  const $emailInput = document.querySelector(".u_container input[name=email]");
+  const $emailInput = document.querySelector(
+    "#user-info-page input[name=email]"
+  );
   e.target.classList.add("none");
   $emailInput.value = "";
 };
@@ -222,7 +224,6 @@ const getInfo = () => {
   const $nicknameInput = document.querySelector("input[name=nickname]");
   const $passwordInput = document.querySelector("input[name=password]");
   const $birthInput = document.querySelector("input[name=birth]");
-  const $emailCancleBtn = $emailInput.nextSibling.childNodes[0];
 
   const info = {
     email: $emailInput.value,
@@ -262,13 +263,13 @@ const initUserInfoPage = ({
   const $prevButton = document.querySelector("#go-back-button");
   const $completeButton = document.querySelector("#complete-button");
 
-  console.log($completeButton);
+  const $emailCancleBtn = $emailBtn.previousSibling.childNodes[0];
+  $emailCancleBtn.addEventListener("click", handleEmailCancle);
 
   $inputs.forEach((input) => {
     input.addEventListener("focusin", handleFocusIn);
     input.addEventListener("focusout", handleFocusOut);
   });
-  $emailCancleBtn.addEventListener("click", handleEmailCancle);
 
   $emailInput.addEventListener("keyup", handleEmailChange);
   $emailBtn.addEventListener("click", handleEmailBtnClick);
