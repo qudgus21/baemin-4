@@ -1,5 +1,5 @@
 const homeController = {
-  page: (req, res) => {
+  renderView: (req, res) => {
     res.render("home");
   },
 };

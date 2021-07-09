@@ -3,12 +3,8 @@ import signupController from "../controllers/signup.js";
 
 const signupRouter = Router();
 
-signupRouter.get("/register", signupController.registerView);
+signupRouter.get("/", signupController.renderView);
 
-signupRouter.post("/register", signupController.register);
-
-signupRouter.get("/terms", signupController.terms);
-
-signupRouter.post("/terms", signupController.checkTerms);
+signupRouter.post("/", signupController.register);
 
 export default signupRouter;

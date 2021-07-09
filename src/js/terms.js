@@ -31,21 +31,19 @@ const onClickAllTermsCheckBoxHandler = () => {
 
 const onClickInputsHandler = (e) => {
   const {
-    target: { tagName, id, type },
+    target: { tagName, id },
   } = e;
-  if (tagName === "INPUT" && type !== "submit") {
+  if (tagName === "INPUT") {
     if (id === "all") {
       onClickAllTermsCheckBoxHandler();
     }
     const isNextLevelPossible = checkNextLevelPossible();
-    const $submitButton = document.querySelector("input[type=submit]");
-    $submitButton.disabled = !isNextLevelPossible;
+    const $nextButton = document.querySelector(".next-button");
+    $nextButton.disabled = !isNextLevelPossible;
   }
 };
 
-const onClickSubmitButtonHandler = async (e) => {
-  e.preventDefault();
-
+const getInfo = () => {
   const $checkBoxesArray = Array.from(
     document.querySelectorAll("input[type=checkbox]:not(#all)")
   );
@@ -58,32 +56,52 @@ const onClickSubmitButtonHandler = async (e) => {
     }, {});
   const isOver14 = $over14RadioInput.checked;
 
-  const body = JSON.stringify({
+  const info = {
     ...terms,
     isOver14,
-  });
+  };
 
-  const result = await fetch(`${ORIGIN}/${SIGNUP}/${TERMS}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body,
-  });
+  return info;
 
-  if (result.ok) {
-    location.assign(`/${SIGNUP}/${REGISTER}`);
-  } else {
-    alert("알 수 없는 에러");
-  }
+  // const body = JSON.stringify({
+  //   ...terms,
+  //   isOver14,
+  // });
+
+  // const result = await fetch(`${ORIGIN}/${SIGNUP}/${TERMS}`, {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body,
+  // });
+
+  // if (result.ok) {
+  //   location.assign(`/${SIGNUP}/${REGISTER}`);
+  // } else {
+  //   alert("알 수 없는 에러");
+  // }
 };
 
-const initSignupTermsPage = () => {
+let isInit = false;
+
+const initTermsPage = ({
+  onClickPrevButtonHandler,
+  onClickNextButtonHandler,
+}) => {
+  if (isInit) return;
+  isInit = true;
+
   const $termsWrapperDiv = document.querySelector(".terms-form-wrapper");
-  const $submitButton = document.querySelector("input[type=submit]");
+  const $prevButton = document.querySelector(".prev-button");
+  const $nextButton = document.querySelector(".next-button");
 
   $termsWrapperDiv.addEventListener("click", onClickInputsHandler);
-  $submitButton.addEventListener("click", onClickSubmitButtonHandler);
+  $prevButton.addEventListener("click", onClickPrevButtonHandler);
+  $nextButton.addEventListener("click", () => {
+    const info = getInfo();
+    onClickNextButtonHandler(info);
+  });
 };
 
-initSignupTermsPage();
+export default initTermsPage;
