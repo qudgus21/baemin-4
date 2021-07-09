@@ -6,9 +6,13 @@ html(lang="en")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     link(rel="stylesheet" type="text/css" href="/css/reset.css")
     link(rel="stylesheet" type="text/css" href="/css/layout.css")
-    link(rel="stylesheet" type="text/css" href="/css/login.css")
+    link(rel="stylesheet" type="text/css" href="/css/signup.css")
   body 
     div.layout 
-      include login-content.pug
-
-    script(type="module" src="/js/login.js")
+      div#terms-page.display-none
+        include terms.pug
+      div#phone-page.display-none
+        include phone.pug
+      div#user-info-page.display-none
+        include user-info.pug
+    script(type="module" src="/js/signup.js")

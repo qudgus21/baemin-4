@@ -1,12 +1,10 @@
+import { Router } from "express";
+import signupController from "../controllers/signup.js";
 
-let express = require("express");
-let signup = require("../controllers/signup");
-let router = express.Router();
+const signupRouter = Router();
 
+signupRouter.get("/", signupController.renderView);
 
-router.get("/phone", signup.phone);
+signupRouter.post("/", signupController.register);
 
-router.get("/userInfo", signup.userInfo);
-
-
-module.exports = router;
+export default signupRouter;

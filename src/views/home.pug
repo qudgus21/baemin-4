@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    title baemin-4
+    meta(cahrset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", type="text/css" href="/css/reset.css")
+    link(rel="stylesheet", type="text/css" href="/css/layout.css")
+    link(rel="stylesheet", type="text/css" href="/css/home.css")
+  body 
+    div.layout
+      div.home-page
+        header.home
+          h1 My배민
+          div.banner
+            img(src="/images/banner.png")
+
+        section.login-button-wrapper
+          div.profile-image
+            img(src="/images/profile.png")
+          div
+            button#login-btn 로그인해주세요
+          img(src="/images/short-right-arrow.png").right-arrow
+
+        nav.my-info-nav
+          ul
+            li 
+              a(href="#")
+                img(src="/images/point.png")
+                span 포인트
+            li 
+              a(href="#")
+                img(src="/images/coupon-box.png")
+                span 쿠폰함
+            li 
+              a(href="#")
+                img(src="/images/gift-box.png")
+                span 선물함
+            li 
+              a(href="#")
+                img(src="/images/favorite.png")
+                span 찜
+            li 
+              a(href="#")
+                img(src="/images/order-list.png").small
+                span 주문내역
+            li 
+              a(href="#")
+                img(src="/images/review-management.png")
+                span 리뷰관리
+
+        div.campaign
+          img(src="/images/disposable-product.png")
+          p 일회용품 덜 쓰기, 함께해요!
+          img(src="/images/short-right-arrow.png").right-arrow
+
+        nav.common-info-nav
+          ul
+            li
+              a(href="#")
+                div.wrapper
+                  p.title 배민페이 등록
+                    span.new-label
+                  p.description 배민페이로 결제하면 최대 5.5% 배민포인트가 지급됩니다.
+                img(src="/images/short-right-arrow.png").right-arrow
+            li
+              a(href="#")
+                div.wrapper
+                  p.title 가족계정 관리
+                    span.new-label
+                  p.description 결제수단을 공유해 우리 가족의 끼니를 챙겨주세요.
+                img(src="/images/short-right-arrow.png").right-arrow
+            li
+              a(href="#")
+                div.wrapper
+                  p.title 공지사항
+                img(src="/images/short-right-arrow.png").right-arrow
+            li
+              a(href="#")
+                div.wrapper
+                  p.title 배민커넥트 지원
+                img(src="/images/short-right-arrow.png").right-arrow
+
+  script(type="module" src="/js/home.js")

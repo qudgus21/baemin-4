@@ -1,4 +1,42 @@
 .layout {
   width: 375px;
   height: 667px;
+  border: 1px solid var(--color-lightGray0);
+  overflow-y: scroll;
+}
+
+.sub-layout header {
+  position: sticky;
+  top: 0;
+  display: grid;
+  grid-template-columns: 50px 1fr 50px;
+  align-items: center;
+  height: 60px;
+  background-color: var(--color-white0);
+  z-index: 10;
+}
+
+.sub-layout header h1 {
+  font-size: 1.4rem;
+  line-height: 1.4rem;
+  text-align: center;
+}
+
+.nav-button img {
+  width: 15px;
+  height: 15px;
+  background-color: var(--color-white0);
+}
+
+.sub-layout > div {
+  padding: 20px;
+}
+
+.sub-layout header button {
+  font-weight: bold;
+}
+
+.sub-layout header button:disabled {
+  color: var(--color-lightGray0);
+  cursor: default;
 }

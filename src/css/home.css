@@ -1,0 +1,156 @@
+div.home-page {
+  background-color: var(--color-lightGray1);
+}
+
+div.home-page * {
+  background-color: var(--color-white0);
+}
+
+.home-page header {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-page header h1 {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.home-page header div.banner {
+  height: fit-content;
+}
+
+.home-page header img {
+  width: 100%;
+  height: 100%;
+}
+
+.login-button-wrapper {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 80px 1fr 30px;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.profile-image {
+  justify-self: center;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.profile-image img {
+  width: 100%;
+  height: 100%;
+}
+
+.login-button-wrapper button {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  text-align: start;
+  font-size: 1.5em;
+  color: var(--color-darkGray1);
+}
+
+img.right-arrow {
+  width: 10px;
+}
+
+.my-info-nav ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 1px 0;
+  gap: 1px;
+  background-color: var(--color-lightGray1);
+}
+
+.my-info-nav li {
+  display: grid;
+  height: 80px;
+}
+.my-info-nav a {
+  display: grid;
+  grid-template-rows: 1fr 27px;
+  justify-items: center;
+  row-gap: 10px;
+}
+
+.my-info-nav img {
+  align-self: flex-end;
+  width: 30px;
+}
+
+.my-info-nav img.small {
+  width: 25px;
+}
+
+.my-info-nav span {
+  text-align: center;
+}
+
+.campaign {
+  display: grid;
+  grid-template-columns: 50px 1fr 30px;
+  align-items: center;
+  margin: 10px 0;
+  height: 50px;
+}
+
+.campaign img:first-of-type {
+  margin-left: 15px;
+  width: 30px;
+}
+
+.campaign p {
+  font-size: 1.2em;
+  color: var(--color-green0);
+}
+
+.common-info-nav ul {
+  background-color: var(--color-lightGray1);
+}
+
+.common-info-nav li {
+  height: 70px;
+  margin-bottom: 1px;
+}
+
+.common-info-nav a {
+  display: grid;
+  grid-template-columns: 1fr 30px;
+  align-items: center;
+  padding-left: 15px;
+  height: 100%;
+  column-gap: 5px;
+}
+
+.common-info-nav p.title {
+  font-size: 1.2em;
+  color: var(--color-darkGray0);
+}
+
+.common-info-nav p.description {
+  margin-top: 7px;
+  color: var(--color-darkGray1);
+}
+
+.common-info-nav .wrapper {
+}
+
+.new-label {
+  padding-left: 5px;
+}
+
+.new-label::before {
+  content: "new";
+  font-size: 0.8em;
+  background-color: var(--color-pink0);
+  padding: 3px 5px 1px;
+  color: var(--color-white0);
+  border-radius: 10px;
+  text-transform: uppercase;
+}
