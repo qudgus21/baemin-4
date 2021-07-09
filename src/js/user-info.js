@@ -1,12 +1,18 @@
 const handleEmailChange = (e) => {
   const $emailCancleBtn = e.target.nextSibling.childNodes[0];
   const $emailBtn = e.target.parentNode.lastChild;
-  if (e.target.value.length) {
+  const emailRE = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+
+  if (emailRE.test(e.target.value)) {
     $emailCancleBtn.classList.remove("none");
     $emailBtn.classList.add("focus");
   } else {
     $emailCancleBtn.classList.add("none");
     $emailBtn.classList.remove("focus");
+  }
+
+  if (e.target.value.length) {
+    $emailCancleBtn.classList.remove("none");
   }
 };
 
@@ -145,8 +151,7 @@ const birthValidation = (birth) => {
   let y = parseInt(date[0], 10),
     m = parseInt(date[1], 10),
     d = parseInt(date[2], 10);
-  let dateRegex =
-    /^(?=\d)(?:(?:31(?!.(?:0?[2469]|11))|(?:30|29)(?!.0?2)|29(?=.0?2.(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00)))(?:\x20|$))|(?:2[0-8]|1\d|0?[1-9]))([-.\/])(?:1[012]|0?[1-9])\1(?:1[6-9]|[2-9]\d)?\d\d(?:(?=\x20\d)\x20|$))?(((0?[1-9]|1[012])(:[0-5]\d){0,2}(\x20[AP]M))|([01]\d|2[0-3])(:[0-5]\d){1,2})?$/;
+  let dateRegex = /^(?=\d)(?:(?:31(?!.(?:0?[2469]|11))|(?:30|29)(?!.0?2)|29(?=.0?2.(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00)))(?:\x20|$))|(?:2[0-8]|1\d|0?[1-9]))([-.\/])(?:1[012]|0?[1-9])\1(?:1[6-9]|[2-9]\d)?\d\d(?:(?=\x20\d)\x20|$))?(((0?[1-9]|1[012])(:[0-5]\d){0,2}(\x20[AP]M))|([01]\d|2[0-3])(:[0-5]\d){1,2})?$/;
   let validation = /^[0-9]{4}.[0-9]{2}.[0-9]{2}/;
   return validation.test(birth) && dateRegex.test(d + "-" + m + "-" + y);
 };
@@ -188,6 +193,13 @@ const handleBirthChange = (e) => {
   completeRegisterCheck();
 };
 
+const handleEmailCancle = (e) => {
+  e.preventDefault();
+  const $emailInput = document.querySelector(".u_container input[name=email]");
+  e.target.classList.add("none");
+  $emailInput.value = "";
+};
+
 const completeRegisterCheck = () => {
   const $completes = document.querySelectorAll(
     "#user-info-page form > div > span"
@@ -205,64 +217,12 @@ const completeRegisterCheck = () => {
   }
 };
 
-const handleCompleteClick = (e) => {
-  const $phoneInput = document.querySelector(
-    "#phone-page .phone_wrapper form input"
-  );
-  const $emailInput = document.querySelector(
-    "#user-info-page input[name=email]"
-  );
-  const $nameInput = document.querySelector(
-    "#user-info-page input[name=nickname]"
-  );
-  const $pwdInput = document.querySelector(
-    "#user-info-page input[name=password]"
-  );
-  const $birthInput = document.querySelector(
-    "#user-info-page input[name=birth]"
-  );
-
-  if (e.target.classList.contains("complete")) {
-    let phone = $phoneInput.value;
-    let email = $emailInput.value;
-    let name = $nameInput.value;
-    let password = $pwdInput.value;
-    let birth = $birthInput.value;
-
-    let userData = {
-      method: "POST",
-      body: JSON.stringify({ phone, email, name, password, birth }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
-    fetch(`/signup/register`, userData)
-      .then((response) => response.json())
-      .then((response) => {
-        if (response.status === 200) {
-          window.location.href = "/login";
-        }
-      })
-      .catch((err) => {
-        alert("아이디 또는 패스워드를 확인해 주세요.");
-      });
-  }
-};
-
-const handleBeforeToPhone = (e) => {
-  const $phoneContainer = document.querySelector("#phone-page");
-  const $userContainer = document.querySelector("#user-info-page");
-
-  $phoneContainer.classList.remove("none");
-  $userContainer.classList.add("none");
-};
-
 const getInfo = () => {
   const $emailInput = document.querySelector("input[name=email]");
   const $nicknameInput = document.querySelector("input[name=nickname]");
   const $passwordInput = document.querySelector("input[name=password]");
   const $birthInput = document.querySelector("input[name=birth]");
+  const $emailCancleBtn = $emailInput.nextSibling.childNodes[0];
 
   const info = {
     email: $emailInput.value,
@@ -308,6 +268,8 @@ const initUserInfoPage = ({
     input.addEventListener("focusin", handleFocusIn);
     input.addEventListener("focusout", handleFocusOut);
   });
+  $emailCancleBtn.addEventListener("click", handleEmailCancle);
+
   $emailInput.addEventListener("keyup", handleEmailChange);
   $emailBtn.addEventListener("click", handleEmailBtnClick);
   $nameInput.addEventListener("keyup", handleNicknameChange);

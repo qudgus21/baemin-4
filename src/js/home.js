@@ -1,9 +1,7 @@
-import { ORIGIN, LOGIN } from "./constant/path.js";
+import { LOGIN } from "./constant/path.js";
 
-const onClickLoginButton = (e) => {
-  const loginPageUrl = `${ORIGIN}/${LOGIN}`;
-
-  location.assign(loginPageUrl);
+const onClickLoginButton = () => {
+  location.assign(`/${LOGIN}`);
 };
 
 const initHomePage = () => {

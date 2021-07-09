@@ -1,5 +1,3 @@
-import { ORIGIN, REGISTER, SIGNUP, TERMS } from "./constant/path.js";
-
 const checkNextLevelPossible = () => {
   const $checkBoxesArray = Array.from(
     document.querySelectorAll("input[type=checkbox]:not(#all)")
@@ -62,25 +60,6 @@ const getInfo = () => {
   };
 
   return info;
-
-  // const body = JSON.stringify({
-  //   ...terms,
-  //   isOver14,
-  // });
-
-  // const result = await fetch(`${ORIGIN}/${SIGNUP}/${TERMS}`, {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   body,
-  // });
-
-  // if (result.ok) {
-  //   location.assign(`/${SIGNUP}/${REGISTER}`);
-  // } else {
-  //   alert("알 수 없는 에러");
-  // }
 };
 
 let isInit = false;
