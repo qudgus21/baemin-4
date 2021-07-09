@@ -1,12 +1,19 @@
 const handleEmailChange = (e) => {
   const $emailCancleBtn = e.target.nextSibling.childNodes[0];
   const $emailBtn = e.target.parentNode.lastChild;
-  if (e.target.value.length) {
+  const emailRE =
+    /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+
+  if (emailRE.test(e.target.value)) {
     $emailCancleBtn.classList.remove("none");
     $emailBtn.classList.add("focus");
   } else {
     $emailCancleBtn.classList.add("none");
     $emailBtn.classList.remove("focus");
+  }
+
+  if (e.target.value.length) {
+    $emailCancleBtn.classList.remove("none");
   }
 };
 
@@ -188,6 +195,15 @@ const handleBirthChange = (e) => {
   completeRegisterCheck();
 };
 
+const handleEmailCancle = (e) => {
+  e.preventDefault();
+  const $emailInput = document.querySelector(
+    "#user-info-page input[name=email]"
+  );
+  e.target.classList.add("none");
+  $emailInput.value = "";
+};
+
 const completeRegisterCheck = () => {
   const $completes = document.querySelectorAll(
     "#user-info-page form > div > span"
@@ -247,10 +263,14 @@ const initUserInfoPage = ({
 
   $completeButton.disabled = true;
 
+  const $emailCancleBtn = $emailBtn.previousSibling.childNodes[0];
+  $emailCancleBtn.addEventListener("click", handleEmailCancle);
+
   $inputs.forEach((input) => {
     input.addEventListener("focusin", handleFocusIn);
     input.addEventListener("focusout", handleFocusOut);
   });
+
   $emailInput.addEventListener("keyup", handleEmailChange);
   $emailBtn.addEventListener("click", handleEmailBtnClick);
   $nameInput.addEventListener("keyup", handleNicknameChange);
