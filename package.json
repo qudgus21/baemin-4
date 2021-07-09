@@ -20,5 +20,9 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/npm/npm.git"
   }
 }
