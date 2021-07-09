@@ -205,59 +205,6 @@ const completeRegisterCheck = () => {
   }
 };
 
-const handleCompleteClick = (e) => {
-  const $phoneInput = document.querySelector(
-    "#phone-page .phone_wrapper form input"
-  );
-  const $emailInput = document.querySelector(
-    "#user-info-page input[name=email]"
-  );
-  const $nameInput = document.querySelector(
-    "#user-info-page input[name=nickname]"
-  );
-  const $pwdInput = document.querySelector(
-    "#user-info-page input[name=password]"
-  );
-  const $birthInput = document.querySelector(
-    "#user-info-page input[name=birth]"
-  );
-
-  if (e.target.classList.contains("complete")) {
-    let phone = $phoneInput.value;
-    let email = $emailInput.value;
-    let name = $nameInput.value;
-    let password = $pwdInput.value;
-    let birth = $birthInput.value;
-
-    let userData = {
-      method: "POST",
-      body: JSON.stringify({ phone, email, name, password, birth }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
-    fetch(`/signup/register`, userData)
-      .then((response) => response.json())
-      .then((response) => {
-        if (response.status === 200) {
-          window.location.href = "/login";
-        }
-      })
-      .catch((err) => {
-        alert("아이디 또는 패스워드를 확인해 주세요.");
-      });
-  }
-};
-
-const handleBeforeToPhone = (e) => {
-  const $phoneContainer = document.querySelector("#phone-page");
-  const $userContainer = document.querySelector("#user-info-page");
-
-  $phoneContainer.classList.remove("none");
-  $userContainer.classList.add("none");
-};
-
 const getInfo = () => {
   const $emailInput = document.querySelector("input[name=email]");
   const $nicknameInput = document.querySelector("input[name=nickname]");

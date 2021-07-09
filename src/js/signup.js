@@ -1,11 +1,12 @@
 import initTermsPage from "./terms.js";
 import initPhonePage from "./phone.js";
 import initUserInfoPage from "./user-info.js";
+import { SIGNUP } from "./constant/path.js";
 
 const signup = async (info) => {
   const body = JSON.stringify(info);
 
-  const result = await fetch("/signup", {
+  const result = await fetch(`/${SIGNUP}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

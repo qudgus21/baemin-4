@@ -1,4 +1,4 @@
-import { LOGIN, ORIGIN } from "./constant/path.js";
+import { LOGIN } from "./constant/path.js";
 
 const checkEmailInput = (email) => {
   const hasEmail = email.trim().length > 0;
@@ -31,10 +31,9 @@ const onClickLoginButtonHandler = async (e) => {
     : "block";
 
   if (isFillEmailInput && isFillPasswordInput) {
-    const url = new URL(`${ORIGIN}/${LOGIN}`);
     const body = JSON.stringify({ email, password });
 
-    const result = await fetch(url.pathname, {
+    const result = await fetch(`/${LOGIN}`, {
       method: "POST",
       body,
       headers: {
