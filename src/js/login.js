@@ -49,10 +49,16 @@ const onClickLoginButtonHandler = async (e) => {
   }
 };
 
+const onClickCloseButtonHandler = () => {
+  location.assign("/");
+};
+
 const initLoginPage = () => {
   const $loginButton = document.querySelector('input[type="submit"]');
+  const $closeButton = document.querySelector("#close-button");
 
   $loginButton.addEventListener("click", onClickLoginButtonHandler);
+  $closeButton.addEventListener("click", onClickCloseButtonHandler);
 };
 
 initLoginPage();
