@@ -195,7 +195,9 @@ const handleBirthChange = (e) => {
 
 const handleEmailCancle = (e) => {
   e.preventDefault();
-  const $emailInput = document.querySelector(".u_container input[name=email]");
+  const $emailInput = document.querySelector(
+    "#user-info-page input[name=email]"
+  );
   e.target.classList.add("none");
   $emailInput.value = "";
 };
@@ -204,17 +206,13 @@ const completeRegisterCheck = () => {
   const $completes = document.querySelectorAll(
     "#user-info-page form > div > span"
   );
-  const $next = document.querySelector("#user-info-page header button");
+  const $completeButton = document.querySelector("#complete-button");
 
   const isCompleted = Array.from($completes).every((complete) =>
     complete.classList.contains("complete")
   );
 
-  if (isCompleted) {
-    $next.classList.add("complete");
-  } else {
-    $next.classList.remove("complete");
-  }
+  $completeButton.disabled = !isCompleted;
 };
 
 const getInfo = () => {
@@ -222,7 +220,6 @@ const getInfo = () => {
   const $nicknameInput = document.querySelector("input[name=nickname]");
   const $passwordInput = document.querySelector("input[name=password]");
   const $birthInput = document.querySelector("input[name=birth]");
-  const $emailCancleBtn = $emailInput.nextSibling.childNodes[0];
 
   const info = {
     email: $emailInput.value,
@@ -259,16 +256,18 @@ const initUserInfoPage = ({
   const $birthInput = document.querySelector(
     "#user-info-page input[name=birth]"
   );
-  const $prevButton = document.querySelector("#go-back-button");
+  const $prevButton = document.querySelector("#go-back-button-2");
   const $completeButton = document.querySelector("#complete-button");
 
-  console.log($completeButton);
+  $completeButton.disabled = true;
+
+  const $emailCancleBtn = $emailBtn.previousSibling.childNodes[0];
+  $emailCancleBtn.addEventListener("click", handleEmailCancle);
 
   $inputs.forEach((input) => {
     input.addEventListener("focusin", handleFocusIn);
     input.addEventListener("focusout", handleFocusOut);
   });
-  $emailCancleBtn.addEventListener("click", handleEmailCancle);
 
   $emailInput.addEventListener("keyup", handleEmailChange);
   $emailBtn.addEventListener("click", handleEmailBtnClick);

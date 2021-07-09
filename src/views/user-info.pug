@@ -1,5 +1,9 @@
 extends back-layout
 
+block prev-button 
+  button#go-back-button-2.nav-button.prev-button
+        img(src="/images/arrow.png")
+        
 block title
     h1 회원가입
 
@@ -12,7 +16,8 @@ block content
         form
             input(type="text", name="email", placeholder="이메일을 입력해주세요")
             div
-                button x    
+                button.reset-button 
+                    span x    
                 span.none.check
             button 중복확인        
     div.info.none

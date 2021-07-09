@@ -1,5 +1,9 @@
 extends back-layout
 
+block prev-button 
+  button#go-back-button.nav-button.prev-button
+        img(src="/images/arrow.png")
+
 block title
   h1 회원가입
 
@@ -12,7 +16,8 @@ block content
     form
       input(type="text", maxlength='13' name="phone", placeholder="전화번호를 입력해주세요")
       div
-        button x
+        button.reset-button
+          span x
         span.check
   section.input_certify
     button 인증번호 받기

@@ -11,18 +11,16 @@ const completePhoneCheck = () => {
   const $certifyInput = document.querySelector(
     "#phone-page input[name=cetify_num]"
   );
-  const $nextBtn = document.querySelector("#phone-page header button");
+  const $nextBtn = document.querySelector("#go-next-button");
 
   const phoneNumber = $phoneInput.value;
   const certifyNumber = $certifyInput.value;
   const phoneValidationRE = /^\d{3}-\d{3,4}-\d{4}$/;
   const certifyRE = /^[0-9]{4}$/;
 
-  if (phoneValidationRE.test(phoneNumber) && certifyRE.test(certifyNumber)) {
-    $nextBtn.classList.add("complete");
-  } else {
-    $nextBtn.classList.remove("complete");
-  }
+  $nextBtn.disabled = !(
+    phoneValidationRE.test(phoneNumber) && certifyRE.test(certifyNumber)
+  );
 };
 
 const handlePhoneInputChange = (e) => {
@@ -99,16 +97,6 @@ const handleReCertification = (e) => {
   }, 2000);
 };
 
-const handleNextBtnClick = (e) => {
-  const $phoneContainer = document.querySelector("#phone-page");
-  const $userContainer = document.querySelector("#user-info-page");
-
-  if (e.target.classList.contains("complete")) {
-    $phoneContainer.classList.add("none");
-    $userContainer.classList.remove("none");
-  }
-};
-
 const getInfo = () => {
   const $passwordInput = document.querySelector("input[name=phone]");
   const password = $passwordInput.value;
@@ -143,6 +131,8 @@ const initPhonePage = ({
   );
   const $pervBtn = document.querySelector("#go-back-button");
   const $nextBtn = document.querySelector("#go-next-button");
+
+  $nextBtn.disabled = true;
 
   $phoneInput.addEventListener("keyup", handlePhoneInputChange);
   $phoneInput.addEventListener("focusin", handlePhoneInputFocusIn);

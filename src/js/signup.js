@@ -1,7 +1,7 @@
 import initTermsPage from "./terms.js";
 import initPhonePage from "./phone.js";
 import initUserInfoPage from "./user-info.js";
-import { SIGNUP } from "./constant/path.js";
+import { LOGIN, SIGNUP } from "./constant/path.js";
 
 const signup = async (info) => {
   const body = JSON.stringify(info);
@@ -25,7 +25,6 @@ const SignupStage = {
       ...this._signupInfo,
       ...info,
     };
-    console.log(this._signupInfo);
   },
   init() {
     this._stage = 0;
@@ -48,7 +47,7 @@ const SignupStage = {
       const isOk = await signup(this._signupInfo);
       if (isOk) {
         this.init();
-        location.assign("/");
+        location.assign(`/${LOGIN}`);
       } else {
         alert("회원가입에 실패하셨습니다.");
       }

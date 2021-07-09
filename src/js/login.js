@@ -42,6 +42,8 @@ const onClickLoginButtonHandler = async (e) => {
     });
 
     if (result.ok) {
+      const json = await result.json();
+      localStorage.setItem("nickname", json.nickname || json.name);
       location.assign("/");
     } else {
       alert("이메일 또는 비밀번호가 틀립니다.");
@@ -49,10 +51,16 @@ const onClickLoginButtonHandler = async (e) => {
   }
 };
 
+const onClickCloseButtonHandler = () => {
+  location.assign("/");
+};
+
 const initLoginPage = () => {
   const $loginButton = document.querySelector('input[type="submit"]');
+  const $closeButton = document.querySelector("#close-button");
 
   $loginButton.addEventListener("click", onClickLoginButtonHandler);
+  $closeButton.addEventListener("click", onClickCloseButtonHandler);
 };
 
 initLoginPage();
