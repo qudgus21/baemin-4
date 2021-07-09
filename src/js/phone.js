@@ -74,9 +74,11 @@ const handleCertificationFocusOut = (e) => {
 const handleCancleClick = (e) => {
   e.preventDefault();
   const $pwdCheck = e.target.nextSibling;
-  e.target.parentNode.previousSibling.value = "";
-  e.target.classList.remove("show");
-  $pwdCheck.classList.remove("complete");
+  const $phoneInput = document.querySelector("input[name=phone]");
+  const $restBtn = document.querySelector(".reset-button");
+  $phoneInput.value = "";
+  $restBtn.classList.remove("show");
+  $restBtn.nextSibling.classList.remove("complete");
   completePhoneCheck();
 };
 

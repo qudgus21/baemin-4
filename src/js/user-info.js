@@ -3,6 +3,7 @@ const handleEmailChange = (e) => {
   const $emailBtn = e.target.parentNode.lastChild;
   const emailRE = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
+  console.log($emailCancleBtn);
   if (emailRE.test(e.target.value)) {
     $emailCancleBtn.classList.remove("none");
     $emailBtn.classList.add("focus");
@@ -13,6 +14,7 @@ const handleEmailChange = (e) => {
 
   if (e.target.value.length) {
     $emailCancleBtn.classList.remove("none");
+    $emailCancleBtn.parentNode.classList.remove("none");
   }
 };
 
@@ -198,7 +200,9 @@ const handleEmailCancle = (e) => {
   const $emailInput = document.querySelector(
     "#user-info-page input[name=email]"
   );
-  e.target.classList.add("none");
+  e.target.parentNode.classList.add("none");
+
+  console.log(e.target);
   $emailInput.value = "";
 };
 
