@@ -23,7 +23,6 @@
     "nodemon": "^2.0.9"
   },
   "repository": {
-    "type": "git",
-    "url": "http://github.com/npm/npm.git"
+    "url": "https://github.com/woowa-techcamp-2021/baemin-4"
   }
 }
