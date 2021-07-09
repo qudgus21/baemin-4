@@ -30,6 +30,7 @@ const loginController = {
         res.status(200);
         res.json({
           message: "Login success",
+          ...user,
         });
       } else {
         res.status(400);

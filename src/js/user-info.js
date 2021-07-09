@@ -256,7 +256,7 @@ const initUserInfoPage = ({
   const $birthInput = document.querySelector(
     "#user-info-page input[name=birth]"
   );
-  const $prevButton = document.querySelector("#go-back-button");
+  const $prevButton = document.querySelector("#go-back-button-2");
   const $completeButton = document.querySelector("#complete-button");
 
   $completeButton.disabled = true;
