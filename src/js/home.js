@@ -5,15 +5,21 @@ const onClickLoginButton = () => {
 };
 
 const onClickLogOutButton = () => {
-  localStorage.setItem("isLogin", "false");
+  const $login = document.querySelector("#login-btn");
+  $login.textContent = `로그인해주세요`;
+  localStorage.removeItem("nickname");
+
+  const $loginButton = document.querySelector(".login-button-wrapper");
+
+  $loginButton.addEventListener("click", onClickLoginButton);
 };
 
 const initHomePage = () => {
-  const isLogin = localStorage.getItem("isLogin") === "true";
+  const isLogin = localStorage.getItem("nickname") !== null;
 
   if (isLogin) {
-    // $login = document.querySelector("#login-btn");
-    // $login.textContent
+    const $login = document.querySelector("#login-btn");
+    $login.textContent = `환영합니다 ${localStorage.getItem("nickname")}`;
   }
 
   const $loginButton = document.querySelector(".login-button-wrapper");

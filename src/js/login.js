@@ -42,10 +42,8 @@ const onClickLoginButtonHandler = async (e) => {
     });
 
     if (result.ok) {
-      // const json = await result.json()
-      // console.log(json)
-
-      localStorage.setItem("isLogin", "true");
+      const json = await result.json();
+      localStorage.setItem("nickname", json.nickname || json.name);
       location.assign("/");
     } else {
       alert("이메일 또는 비밀번호가 틀립니다.");

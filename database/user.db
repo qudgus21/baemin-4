@@ -4,5 +4,6 @@
 {"name":"test1","phone":"010-3888-2424","email":"test1@woowa.com","password":"$2b$12$V4dxR62hEIeWrI1ga5Mf7u5rsudjcym7YelohOvzMkfLbk40nC5dq","birth":"2010.05.28","_id":"BH94CJZcXLRXemYf"}
 {"name":"test5","phone":"010-3888-2424","email":"test5@woowa.com","password":"$2b$12$I2Y2KCA4etC4FuGNgoH1He75.X1VtsgDDfjlMV.qwkuE9ig5yhKES","birth":"2010.05.28","_id":"Gli4sgYmycsA3xoG"}
 {"name":"test4","phone":"010-3888-2424","email":"test4@woowa.com","password":"$2b$12$2C2.jcsOjbtQNQ3OBI0nQOigp7ESfntx86pvYsORfw9dfvqa6b.la","birth":"2010.05.28","_id":"OiTL8rSe95h1jUKO"}
+{"term1":true,"term2":true,"term3":true,"term4":true,"term5":true,"isOver14":true,"password":"$2b$12$nAM5K9T.cgAU6uhPaNEFpeVyFl9WOa6/BR3wVKJc3d8qzSrPn3iOG","email":"qudgus54321@naver.com","nickname":"qudgus21","birth":"2020.10.10","_id":"QYMC3936Y1R1k8Y3"}
 {"email":"jjj@jjj.com","nickname":"fff","password":"$2b$12$NwV00VxVRvq9/jTQZznvi.8qgLe4EA3JcienxfEChi1qIUme7CDiu","birth":"1992.02.08","_id":"aYdUw6d4M4gYtNei"}
 {"name":"test2","phone":"010-3888-2424","email":"test2@woowa.com","password":"$2b$12$rkRuTEARPLTXD4dOy.QqLu8fvE3pRt.W32LHRhTgX0Ht9ypIeP406","birth":"2010.05.28","_id":"m7Mf9wRWTlDgZez6"}
